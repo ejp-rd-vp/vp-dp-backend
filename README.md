@@ -27,7 +27,7 @@
 ## Troubleshooting
 
 ## License
-This project is licensed under the (Apache License 2.0)[https://github.com/ejp-rd-vp/vp-dp-backend/blob/develop/LICENSE].
+This project is licensed under the [Apache License 2.0](https://github.com/ejp-rd-vp/vp-dp-backend/blob/develop/LICENSE).
 
 ## Contact Information
 
