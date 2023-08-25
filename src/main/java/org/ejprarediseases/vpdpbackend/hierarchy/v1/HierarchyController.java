@@ -1,6 +1,12 @@
 package org.ejprarediseases.vpdpbackend.hierarchy.v1;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -25,6 +31,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("v1/hierarchy")
 @RequiredArgsConstructor
 @Validated
+@Tag(name = "Hierarchy", description = "Endpoints for handling orphanet hierarchy operations")
 public class HierarchyController {
 
     private final HierarchyService hierarchyService;
@@ -60,10 +67,35 @@ public class HierarchyController {
      * @param numberOfLevels The number of hierarchy levels to retrieve (default: 100).
      * @return ResponseEntity containing the hierarchical representation as a list of OrphaCodeHierarchyDto objects.
      */
+    @Operation(
+            summary = "Get OrphaCode Hierarchy",
+            description = "Retrieves the hierarchical representation of the OrphaCode."
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "OrphaCode hierarchy retrieved successfully",
+                    content = @io.swagger.v3.oas.annotations.media.Content(
+                            array = @ArraySchema(schema =
+                            @io.swagger.v3.oas.annotations.media.Schema(implementation = OrphaCodeHierarchyDto.class))
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad request"
+            ),
+            @ApiResponse(
+                    responseCode = "406",
+                    description = "Not Acceptable"
+            )
+    })
     @GetMapping()
     public ResponseEntity getOrphaCodeHierarchy(
+            @Parameter(description = "List of hierarchical ways (e.g. UP or DOWN) to be used")
             @RequestParam @Valid List<String> ways,
+            @Parameter(description = "OrphaCode for which the hierarchy needs to be retrieved")
             @RequestParam @Valid String orphaCode,
+            @Parameter(description = "Number of hierarchy levels to retrieve (default: 100)", example = "100")
             @RequestParam(required = false, defaultValue = "100") @Valid @Min(1) int numberOfLevels
     ) {
         List<OrphaCodeHierarchyDto> response = null;
