@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -37,9 +38,10 @@ public class HierarchyController {
     private final HierarchyService hierarchyService;
 
     /**
-     * Exception handler for ConstraintViolationException.
-     * @param e The ConstraintViolationException instance.
-     * @return ResponseEntity containing the error message and HTTP status code.
+     * Handles ConstraintViolationException by returning a BAD_REQUEST response with error message.
+     *
+     * @param e The ConstraintViolationException.
+     * @return A ResponseEntity containing the error message and BAD_REQUEST status.
      */
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -49,13 +51,27 @@ public class HierarchyController {
     }
 
     /**
-     * Exception handler for MissingServletRequestParameterException.
-     * @param e The MissingServletRequestParameterException instance.
-     * @return ResponseEntity containing the error message and HTTP status code.
+     * Handles MissingServletRequestParameterException by returning a BAD_REQUEST response with error message.
+     *
+     * @param e The MissingServletRequestParameterException.
+     * @return A ResponseEntity containing the error message and BAD_REQUEST status.
      */
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ResponseEntity<String> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
+        return new ResponseEntity<>
+                (e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    /**
+     * Handles MethodArgumentTypeMismatchException by returning a BAD_REQUEST response with error message.
+     *
+     * @param e The MethodArgumentTypeMismatchException.
+     * @return A ResponseEntity containing the error message and BAD_REQUEST status.
+     */
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    ResponseEntity<String> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
         return new ResponseEntity<>
                 (e.getMessage(), HttpStatus.BAD_REQUEST);
     }
@@ -92,7 +108,7 @@ public class HierarchyController {
     @GetMapping()
     public ResponseEntity getOrphaCodeHierarchy(
             @Parameter(description = "List of hierarchical ways (e.g. UP or DOWN) to be used")
-            @RequestParam @Valid List<String> ways,
+            @RequestParam @Valid List<HierarchyWay> ways,
             @Parameter(description = "OrphaCode for which the hierarchy needs to be retrieved")
             @RequestParam @Valid String orphaCode,
             @Parameter(description = "Number of hierarchy levels to retrieve (default: 100)", example = "100")
@@ -100,9 +116,8 @@ public class HierarchyController {
     ) {
         List<OrphaCodeHierarchyDto> response = null;
         try {
-            List<HierarchyWay> hierarchyWays = ways.stream().map(HierarchyWay::getNameFromValue).toList();
             response = hierarchyService.convertOrphaCodeHierarchyToListOfOrphaCodeDto(
-                    hierarchyService.getOrphaCodeHierarchy(orphaCode, hierarchyWays, numberOfLevels));
+                    hierarchyService.getOrphaCodeHierarchy(orphaCode, ways, numberOfLevels));
         } catch (JsonProcessingException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         } catch (NoSuchElementException e) {
