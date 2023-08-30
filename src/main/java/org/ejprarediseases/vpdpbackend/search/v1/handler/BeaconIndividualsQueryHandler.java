@@ -75,14 +75,22 @@ public class BeaconIndividualsQueryHandler {
     private static BeaconRequestBodyQuerySection buildQuerySection(SearchRequest searchRequest) {
         BeaconRequestBodyQuerySection querySection = new BeaconRequestBodyQuerySection();
         List<BeaconRequestBodyFilter> filters = new ArrayList<>();
-        filters.add(buildSexFilter(searchRequest.getSexes()));
         filters.add(buildDiseaseFilter(searchRequest.getDiseases()));
-        filters.add(buildMinAgeFilter(searchRequest.getAgeThisYear().get(0)));
-        filters.add(buildMaxAgeFilter(searchRequest.getAgeThisYear().get(1)));
-        filters.add(buildMinSymptomOnsetFilter(searchRequest.getSymptomOnset().get(0)));
-        filters.add(buildMaxSymptomOnsetFilter(searchRequest.getSymptomOnset().get(1)));
-        filters.add(buildMinAgeAtDiagnosisFilter(searchRequest.getAgeAtDiagnosis().get(0)));
-        filters.add(buildMaxAgeAtDiagnosisFilter(searchRequest.getAgeAtDiagnosis().get(1)));
+        if (searchRequest.getSexes() != null && !searchRequest.getSexes().isEmpty()) {
+            filters.add(buildSexFilter(searchRequest.getSexes()));
+        }
+        if (searchRequest.getAgeThisYear() != null && searchRequest.getAgeThisYear().size() == 2) {
+            filters.add(buildMinAgeFilter(searchRequest.getAgeThisYear().get(0)));
+            filters.add(buildMaxAgeFilter(searchRequest.getAgeThisYear().get(1)));
+        }
+        if (searchRequest.getSymptomOnset() != null && searchRequest.getSymptomOnset().size() == 2) {
+            filters.add(buildMinSymptomOnsetFilter(searchRequest.getSymptomOnset().get(0)));
+            filters.add(buildMaxSymptomOnsetFilter(searchRequest.getSymptomOnset().get(1)));
+        }
+        if (searchRequest.getAgeAtDiagnosis() != null && searchRequest.getAgeAtDiagnosis().size() == 2) {
+            filters.add(buildMinAgeAtDiagnosisFilter(searchRequest.getAgeAtDiagnosis().get(0)));
+            filters.add(buildMaxAgeAtDiagnosisFilter(searchRequest.getAgeAtDiagnosis().get(1)));
+        }
         querySection.setFilters(filters);
         return querySection;
     }
