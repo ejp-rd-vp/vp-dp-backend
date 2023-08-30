@@ -61,8 +61,12 @@ public class BeaconCatalogQueryHandler {
         BeaconRequestBodyQuerySection querySection = new BeaconRequestBodyQuerySection();
         List<BeaconRequestBodyFilter> filters = new ArrayList<>();
         filters.add(buildDiseaseFilter(searchRequest.getDiseases()));
-        filters.add(buildResourceTypesFilter(searchRequest.getResourceTypes()));
-        filters.add(buildCountryFilter(searchRequest.getCountries()));
+        if(searchRequest.getResourceTypes() != null && !searchRequest.getResourceTypes().isEmpty()) {
+            filters.add(buildResourceTypesFilter(searchRequest.getResourceTypes()));
+        }
+        if(searchRequest.getCountries() != null && !searchRequest.getCountries().isEmpty()) {
+            filters.add(buildCountryFilter(searchRequest.getCountries()));
+        }
         querySection.setFilters(filters);
         return querySection;
     }
