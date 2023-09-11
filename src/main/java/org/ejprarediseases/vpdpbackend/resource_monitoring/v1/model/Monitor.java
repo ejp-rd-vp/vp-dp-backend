@@ -25,7 +25,7 @@ public class Monitor {
     @Column(name = "response_time")
     private long responseTime;
     @Basic
-    @Column(name = "response_body")
+    @Column(name = "response_body", columnDefinition="text", length=10485760)
     private String responseBody;
     @Basic
     @Column(name = "timestamp")
