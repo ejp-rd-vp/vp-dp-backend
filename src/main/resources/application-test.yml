@@ -6,29 +6,28 @@ application:
     scheduledMonitoringRateInMinutes: ${MONITORING_RATE_IN_MIN:15}
 
   notification:
-    senderEmailAddress: ${SENDER_OUTLOOK_ADDRESS}
-    senderEmailPassword: ${SENDER_OUTLOOK_PASSWORD}
+    senderEmailAddress: ${SENDER_OUTLOOK_ADDRESS:youremail@domain.com}
+    senderEmailPassword: ${SENDER_OUTLOOK_PASSWORD:password}
 
   hierarchyUrl: ${HIERARCHY_URL:http://155.133.131.171:8080/ClassifTraversal/hierarchies/traverse}
   geneMappingUrl: ${GENE_MAPPING_URL:http://155.133.131.171:8080/GENES/gendis/find}
-  resourcesAuthKeys: ${RESOURCES_AUTH_KEYS}
+  resourcesAuthKeys: ${RESOURCES_AUTH_KEYS:{"1":"1"}}
 
 logging:
   level:
     org:
       hibernate:
         SQL: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
       springframework:
         jdbc:
           core:
             JdbcTemplate: debug
 
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DB_HOST:localhost}/${DB_NAME:ejp-test}?stringtype=unspecified
-    username: ${DB_USER_NAME:ejp-test}
-    password: ${DB_USER_PW:ejp-test}
   security:
     oauth2:
       resourceserver:
@@ -39,7 +38,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
   sql:
     init:
       # The default value is 'embedded', which only works for in-memory databases.
