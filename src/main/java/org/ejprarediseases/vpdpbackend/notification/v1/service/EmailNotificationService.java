@@ -46,8 +46,7 @@ public class EmailNotificationService {
      * @param resource The resource for which the notification is being sent.
      * @param type     The type of the notification.
      */
-    public void sendEmailNotification(
-            @Valid Resource resource, NotificationType type) {
+    public Notification sendEmailNotification(@Valid Resource resource, NotificationType type) {
         Notification notification = new Notification();
         try {
             Message message = buildEmailMessage(resource, type);
@@ -62,6 +61,7 @@ public class EmailNotificationService {
             notification.setResourceId(resource.getId());
             notificationRepository.save(notification);
         }
+        return notification;
     }
 
     /**
