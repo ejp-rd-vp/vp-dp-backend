@@ -1,10 +1,13 @@
 package org.ejprarediseases.vpdpbackend.resource_monitoring.v1;
 
+import org.ejprarediseases.vpdpbackend.db.DatabaseSetupExtension;
 import org.ejprarediseases.vpdpbackend.resource_monitoring.v1.model.Monitor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
@@ -18,6 +21,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @ActiveProfiles("test")
 @Tag("UnitTest")
+@ExtendWith(DatabaseSetupExtension.class)
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 @DisplayName("Resource Monitoring Repository Unit Tests")
 public class ResourceMonitoringRepositoryTest {
 

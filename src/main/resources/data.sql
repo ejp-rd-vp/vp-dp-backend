@@ -1,7 +1,6 @@
-CREATE ROLE ejp;
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
-CREATE EXTENSION pg_trgm;
-
+DROP FUNCTION IF EXISTS to_tsvector_multilang;
 CREATE FUNCTION to_tsvector_multilang(text) RETURNS tsvector
     LANGUAGE sql IMMUTABLE
     AS $_$ SELECT to_tsvector('simple', $1) $_$;
@@ -10,19 +9,20 @@ CREATE FUNCTION to_tsvector_multilang(text) RETURNS tsvector
 ALTER FUNCTION to_tsvector_multilang(text) OWNER TO ejp;
 
 
-CREATE TABLE diseases (
+CREATE TABLE IF NOT EXISTS diseases (
     id integer NOT NULL,
     name text,
     orphacode text NOT NULL,
     synonyms text,
-    codes text
+    codes text,
+    PRIMARY KEY (id)
 );
 
 
 ALTER TABLE diseases OWNER TO ejp;
 
 
-CREATE SEQUENCE diseases_id_seq
+CREATE SEQUENCE IF NOT EXISTS diseases_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -37,7 +37,7 @@ ALTER TABLE diseases_id_seq OWNER TO ejp;
 ALTER SEQUENCE diseases_id_seq OWNED BY diseases.id;
 
 
-CREATE TABLE genes (
+CREATE TABLE IF NOT EXISTS genes (
     id integer NOT NULL,
     hgnc_id text NOT NULL,
     symbol text,
@@ -46,12 +46,13 @@ CREATE TABLE genes (
     previous_symbols text,
     alias_symbols text,
     alias_names text,
-    omim_id text
+    omim_id text,
+    PRIMARY KEY (id)
 );
 
 ALTER TABLE genes OWNER TO ejp;
 
-CREATE SEQUENCE genes_id_seq
+CREATE SEQUENCE IF NOT EXISTS genes_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -64,7 +65,7 @@ ALTER TABLE genes_id_seq OWNER TO ejp;
 
 ALTER SEQUENCE genes_id_seq OWNED BY genes.id;
 
-CREATE SEQUENCE my_serial
+CREATE SEQUENCE IF NOT EXISTS my_serial
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -77,7 +78,7 @@ ALTER TABLE my_serial OWNER TO ejp;
 
 ALTER SEQUENCE my_serial OWNED BY genes.id;
 
-CREATE TABLE notification (
+CREATE TABLE IF NOT EXISTS notification (
     id integer NOT NULL,
     channel varchar,
     status varchar,
@@ -89,7 +90,7 @@ CREATE TABLE notification (
 
 ALTER TABLE notification OWNER TO ejp;
 
-CREATE SEQUENCE notification_id_seq
+CREATE SEQUENCE IF NOT EXISTS notification_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -101,7 +102,7 @@ ALTER TABLE notification_id_seq OWNER TO ejp;
 
 ALTER SEQUENCE notification_id_seq OWNED BY notification.id;
 
-CREATE TABLE resource_monitor (
+CREATE TABLE IF NOT EXISTS resource_monitor (
     id integer NOT NULL,
     resource_id varchar NOT NULL,
     response_status_code integer,
@@ -113,7 +114,7 @@ CREATE TABLE resource_monitor (
 
 ALTER TABLE resource_monitor OWNER TO ejp;
 
-CREATE SEQUENCE resource_monitor_id_seq
+CREATE SEQUENCE IF NOT EXISTS resource_monitor_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -135,34 +136,30 @@ ALTER TABLE ONLY notification ALTER COLUMN id SET DEFAULT nextval('notification_
 ALTER TABLE ONLY resource_monitor ALTER COLUMN id SET DEFAULT nextval('resource_monitor_id_seq'::regclass);
 
 
-ALTER TABLE ONLY diseases
-    ADD CONSTRAINT diseases_pkey PRIMARY KEY (id);
 
-ALTER TABLE ONLY genes
-    ADD CONSTRAINT genes_pkey PRIMARY KEY (id);
 
 CREATE INDEX search_index_0 ON genes USING gin (to_tsvector_multilang(hgnc_id));
 
 
-CREATE INDEX search_index_10 ON diseases USING gin (orphacode gin_trgm_ops);
+CREATE INDEX IF NOT EXISTS search_index_10 ON diseases USING gin (orphacode gin_trgm_ops);
 
 
-CREATE INDEX search_index_11 ON diseases USING gin (synonyms gin_trgm_ops);
+CREATE INDEX IF NOT EXISTS search_index_11 ON diseases USING gin (synonyms gin_trgm_ops);
 
-CREATE INDEX search_index_12 ON diseases USING gin (codes gin_trgm_ops);
+CREATE INDEX IF NOT EXISTS search_index_12 ON diseases USING gin (codes gin_trgm_ops);
 
-CREATE INDEX search_index_2 ON genes USING gin (to_tsvector_multilang(symbol));
+CREATE INDEX IF NOT EXISTS search_index_2 ON genes USING gin (to_tsvector_multilang(symbol));
 
-CREATE INDEX search_index_3 ON genes USING gin (to_tsvector_multilang(name));
+CREATE INDEX IF NOT EXISTS search_index_3 ON genes USING gin (to_tsvector_multilang(name));
 
-CREATE INDEX search_index_4 ON genes USING gin (to_tsvector_multilang(status));
+CREATE INDEX IF NOT EXISTS search_index_4 ON genes USING gin (to_tsvector_multilang(status));
 
-CREATE INDEX search_index_5 ON genes USING gin (to_tsvector_multilang(previous_symbols));
+CREATE INDEX IF NOT EXISTS search_index_5 ON genes USING gin (to_tsvector_multilang(previous_symbols));
 
-CREATE INDEX search_index_6 ON genes USING gin (to_tsvector_multilang(alias_symbols));
+CREATE INDEX IF NOT EXISTS search_index_6 ON genes USING gin (to_tsvector_multilang(alias_symbols));
 
-CREATE INDEX search_index_7 ON genes USING gin (to_tsvector_multilang(alias_names));
+CREATE INDEX IF NOT EXISTS search_index_7 ON genes USING gin (to_tsvector_multilang(alias_names));
 
-CREATE INDEX search_index_8 ON genes USING gin (to_tsvector_multilang(omim_id));
+CREATE INDEX IF NOT EXISTS search_index_8 ON genes USING gin (to_tsvector_multilang(omim_id));
 
-CREATE INDEX search_index_9 ON diseases USING gin (name gin_trgm_ops);
+CREATE INDEX IF NOT EXISTS search_index_9 ON diseases USING gin (name gin_trgm_ops);
