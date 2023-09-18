@@ -14,6 +14,7 @@ import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Country;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Sex;
 import org.ejprarediseases.vpdpbackend.search.v1.model.SearchRequest;
 import org.ejprarediseases.vpdpbackend.search.v1.model.SearchResponse;
+import org.ejprarediseases.vpdpbackend.utils.UserHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,6 +24,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("v1/search")
@@ -126,13 +129,21 @@ public class SearchController {
         SearchRequest searchRequest = new SearchRequest();
         searchRequest.setResourceTypes(resourceTypes);
         searchRequest.setCountries(countries);
-        searchRequest.setSexes(sexes);
-        searchRequest.setAgeThisYear(ageThisYear);
-        searchRequest.setSymptomOnset(symptomOnset);
-        searchRequest.setAgeAtDiagnosis(ageAtDiagnoses);
         searchRequest.setDiseases(diseases);
         searchRequest.setResourceId(resourceId);
         SearchResponse searchResponse;
+        if(UserHandler.isAuthenticated() && !UserHandler.isAnonymous()) {
+            searchRequest.setSexes(sexes);
+            searchRequest.setAgeThisYear(ageThisYear);
+            searchRequest.setSymptomOnset(symptomOnset);
+            searchRequest.setAgeAtDiagnosis(ageAtDiagnoses);
+        } else {
+            if (Stream.of(sexes, ageThisYear, symptomOnset, ageAtDiagnoses).noneMatch(Objects::isNull)) {
+                return new ResponseEntity<>(
+                        "Please log in to activate these filers: sexes, ageThisYear, symptomOnset, ageAtDiagnoses",
+                        HttpStatus.UNAUTHORIZED);
+            }
+        }
         try {
             searchResponse = searchService.searchForDiseasesByOrphaCode(searchRequest);
         } catch (IOException e) {
