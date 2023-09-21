@@ -1,5 +1,5 @@
 FROM openjdk:18-jdk-alpine
-EXPOSE 8090
+EXPOSE 8095
 RUN apk add sudo
 RUN addgroup -S ejp && adduser -S ejp -G ejp
 USER ejp:ejp
