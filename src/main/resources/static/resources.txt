@@ -58,7 +58,7 @@
   },
   {
     "resourceName": "BBMRI-Eric",
-    "resourceAddress": "http://ejprd.ref.development.bibbox.org/api/ejprd/bbmri/v3/",
+    "resourceAddress": "http://ejp-rd-prod1.vm.cesnet.cz:5050/api/catalogs",
     "resourceHomePage": "https://directory.bbmri-eric.eu/",
     "email": "ammar.barakat@kgu.de",
     "resourceDescription": "The BBMRI-Eric catalogue of rare disease registries and biobanks.",
@@ -223,7 +223,7 @@
     "created": "",
     "updated": "",
     "specsURL": "",
-    "logo": "https://ega-archive.org/images/logo.png",
+    "logo": "https://static.ega-archive.org/img/logo.png",
     "resourceContentType": "",
     "queryable": false,
     "queryType": [],
