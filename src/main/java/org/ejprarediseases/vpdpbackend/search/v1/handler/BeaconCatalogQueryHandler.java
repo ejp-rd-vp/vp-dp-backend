@@ -9,6 +9,7 @@ import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filte
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filters.ontology_filter.BeaconRequestBodyOntologyFilter;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.sections.BeaconRequestBodyMetaSection;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.sections.BeaconRequestBodyQuerySection;
+import org.ejprarediseases.vpdpbackend.utils.UserHandler;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -34,6 +35,7 @@ public class BeaconCatalogQueryHandler {
                 .uri( resource.getResourceAddress())
                 .bodyValue(requestBody)
                 .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", UserHandler.getBearerToken())
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
