@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @OpenAPIDefinition(
         servers = {
-          @Server(url = "/", description = "Default Server URL")
+                @Server(url = "${application.swagger.baseUrl}", description = "Default Server URL"),
         },
         security = @SecurityRequirement(name = "bearerAuth"),
         info = @Info(

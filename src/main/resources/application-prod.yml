@@ -9,6 +9,9 @@ application:
     senderEmailAddress: ${SENDER_OUTLOOK_ADDRESS}
     senderEmailPassword: ${SENDER_OUTLOOK_PASSWORD}
 
+  swagger:
+    baseUrl: ${SWAGGER_UI_BASE_URL:/}
+
   hierarchyUrl: ${HIERARCHY_URL}
   geneMappingUrl: ${GENE_MAPPING_URL}
   resourcesAuthKeys: ${RESOURCES_AUTH_KEYS}
