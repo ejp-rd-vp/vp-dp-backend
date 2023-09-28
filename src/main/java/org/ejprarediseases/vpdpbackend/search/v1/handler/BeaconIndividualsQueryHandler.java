@@ -8,6 +8,7 @@ import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filte
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filters.ontology_filter.BeaconRequestBodyOntologyFilter;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.sections.BeaconRequestBodyMetaSection;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.sections.BeaconRequestBodyQuerySection;
+import org.ejprarediseases.vpdpbackend.utils.UserHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -43,6 +44,7 @@ public class BeaconIndividualsQueryHandler {
                     .bodyValue(requestBody)
                     .accept(MediaType.APPLICATION_JSON)
                     .header("auth-key", authKey)
+                    .header("Authorization", UserHandler.getBearerToken())
                     .retrieve()
                      .onStatus(httpStatus -> httpStatus.value() == 403,
                              error -> Mono.error(new RuntimeException("error Body")))
