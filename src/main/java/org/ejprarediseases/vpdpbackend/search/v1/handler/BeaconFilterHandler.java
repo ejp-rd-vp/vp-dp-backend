@@ -192,7 +192,8 @@ public class BeaconFilterHandler {
         return switch (type) {
             case PATIENT_REGISTRY -> "PatientRegistryDataset";
             case BIO_BANK -> "BiobankDataset";
-            case KNOWLEDGE_BASE -> "KnowledgeBase";
+            case DATASET -> "Dataset";
+            case GUIDELINE -> "Guideline";
             case CATALOG -> "Catalog";
         };
     }
