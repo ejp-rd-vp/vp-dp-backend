@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.ejprarediseases.vpdpbackend.resource.v1.ResourceService;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.Resource;
+import org.ejprarediseases.vpdpbackend.resource.v1.model.ResourceType;
 import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconCatalogQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconIndividualsQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.model.SearchRequest;
@@ -39,8 +40,12 @@ public class SearchService {
             throws IOException, NoSuchElementException {
         Resource resource = resourceService.getResourceById(searchRequest.getResourceId());
         if (resource.getQueryType().contains(BEACON_INDIVIDUALS)) {
-            String authKey = resourceService.getResourceAuthKeyById(searchRequest.getResourceId());
-            return handleBeaconIndividualsQuery(searchRequest, resource, authKey);
+            for (ResourceType resourceType : resource.getResourceType()){
+                if (searchRequest.getResourceTypes().contains(resourceType)){
+                    String authKey = resourceService.getResourceAuthKeyById(searchRequest.getResourceId());
+                    return handleBeaconIndividualsQuery(searchRequest, resource, authKey);
+                }
+            }
         } else if (resource.getQueryType().contains(BEACON_CATALOG)) {
             return handleBeaconCatalogQuery(searchRequest, resource);
         }
