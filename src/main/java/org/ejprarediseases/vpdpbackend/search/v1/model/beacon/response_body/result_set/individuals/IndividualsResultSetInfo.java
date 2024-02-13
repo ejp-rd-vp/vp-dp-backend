@@ -2,9 +2,9 @@ package org.ejprarediseases.vpdpbackend.search.v1.model.beacon.response_body.res
 
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-@JsonIgnoreProperties(ignoreUnknown = true)
-@Data
 
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class IndividualsResultSetInfo {
     private String contactPoint;
     private String contactEmail;
