@@ -33,7 +33,7 @@
     "specsURL": "",
     "logo": "https://ern-ithaca.eu/wp-content/themes/ernithaca/dist/images/ern-ithaca.png",
     "resourceContentType": "",
-    "queryable": true,
+    "queryable": false,
     "queryType": [],
     "theme": []
   },
@@ -321,7 +321,7 @@
     "specsURL": "",
     "logo": "https://genturis.molgeniscloud.org/logo/genturis-registry-logo-bg-white.png",
     "resourceContentType": "",
-    "queryable": true,
+    "queryable": false,
     "queryType": [],
     "theme": []
   },
