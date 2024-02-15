@@ -4,7 +4,8 @@ public enum ResourceType {
 
     PATIENT_REGISTRY,
     BIO_BANK,
-    KNOWLEDGE_BASE,
+    DATASET,
+    GUIDELINE,
     CATALOG;
 
 }

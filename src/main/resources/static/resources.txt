@@ -103,7 +103,7 @@
     "email": "ammar.barakat@kgu.de",
     "resourceDescription": "A collaborative platform for contributing and maintaining pathway information.",
     "resourceType": [
-      "KNOWLEDGE_BASE"
+      "DATASET"
     ],
     "id": "6",
     "created": "2020-10-26T15:26:15.892Z",
@@ -122,7 +122,7 @@
     "email": "ammar.barakat@kgu.de",
     "resourceDescription": ": The Care and Trial Site Registry (CTSR) is an online self-entry database of specialised sites seeing patients with neuromuscular and neurodegenerative diseases. It holds site-level information relevant to clinical studies and care provision, including facilities, equipment, personnel, and trial experience, as well aggregate data about their patient population. It does not hold patient-level data.",
     "resourceType": [
-      "KNOWLEDGE_BASE"
+      "DATASET"
     ],
     "id": "7",
     "created": "2020-10-26T15:26:15.898Z",
@@ -141,7 +141,7 @@
     "email": "ammar.barakat@kgu.de",
     "resourceDescription": "hPSCreg is a global registry for human pluripotent stem cell lines (hPSC-lines). It aims to provide to the community\n\n1) a central and searchable hub for available hPSC-lines\n2) a central registry of clinical studies based on hPSC-lines\n3) a standardized identifier for hPSC-lines and register of these standard names\n4) a trustworthy data source for hPSC-lines by verifying the ethical and biological conformity of registered lines based on community standards\n5) comparability of quality standards in hPSC research\n6) certification of quality and ethical provenance of hPSC-lines\n7) a platform where any scientist or institution generating or working with PSC lines can register their cell lines, projects or clinical studies.",
     "resourceType": [
-      "KNOWLEDGE_BASE"
+      "DATASET"
     ],
     "id": "8",
     "created": "2020-10-26T15:26:15.893Z",
@@ -179,7 +179,7 @@
     "email": "ammar.barakat@kgu.de",
     "resourceDescription": "A catalog to contain all metabolights study resources.",
     "resourceType": [
-      "KNOWLEDGE_BASE"
+      "DATASET"
     ],
     "id": "10",
     "created": "",
