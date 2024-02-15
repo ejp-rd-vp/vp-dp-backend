@@ -19,25 +19,6 @@
     "theme": []
   },
   {
-    "resourceName": "Ithaca",
-    "resourceAddress": "https://ithaca-emx2.molgeniscloud.org/api/beacon/individuals",
-    "resourceHomePage": "https://ithaca.molgeniscloud.org/",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "The main objective of this WP is to set up an interoperable registry dedicated to rare diseases within the scope of ITHACA called ILIAD Rare Diseases patient registry: an International Library of Intellectual disability and Anomalies of Development.",
-    "resourceType": [
-      "PATIENT_REGISTRY"
-    ],
-    "id": "1",
-    "created": "2021-10-13T06:25:33.898Z",
-    "updated": "2021-10-13T06:25:33.898Z",
-    "specsURL": "",
-    "logo": "https://ern-ithaca.eu/wp-content/themes/ernithaca/dist/images/ern-ithaca.png",
-    "resourceContentType": "",
-    "queryable": true,
-    "queryType": ["BEACON_INDIVIDUALS"],
-    "theme": []
-  },
-  {
     "resourceName": "ERKReg",
     "resourceAddress": "https://www448.lamp.le.ac.uk/erknet/BeaconAPI/83/individuals",
     "resourceHomePage": "https://www.erknet.org/patients-registry/registry-mission",
@@ -304,25 +285,6 @@
     "resourceContentType": "",
     "queryable": false,
     "queryType": [],
-    "theme": []
-  },
-  {
-    "resourceName": "Genturis",
-    "resourceAddress": "https://genturis-emx2.molgeniscloud.org/api/beacon/individuals",
-    "resourceHomePage": "https://genturis.molgeniscloud.org/",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "The GENTURIS registry is the European registry for patients with one of the genetic tumour risk syndromes (genturis). The registry is affiliated to the European Reference Network for all patients with one of the genetic tumour risk syndromes (ERN GENTURIS).",
-    "resourceType": [
-      "PATIENT_REGISTRY"
-    ],
-    "id": "16",
-    "created": "2021-10-13T06:25:33.898Z",
-    "updated": "2021-10-13T06:25:33.898Z",
-    "specsURL": "",
-    "logo": "https://genturis.molgeniscloud.org/logo/genturis-registry-logo-bg-white.png",
-    "resourceContentType": "",
-    "queryable": true,
-    "queryType": ["BEACON_INDIVIDUALS"],
     "theme": []
   },
   {
