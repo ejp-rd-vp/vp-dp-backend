@@ -12,6 +12,7 @@ application:
   hierarchyUrl: ${HIERARCHY_URL:http://155.133.131.171:8080/ClassifTraversal/hierarchies/traverse}
   geneMappingUrl: ${GENE_MAPPING_URL:http://155.133.131.171:8080/GENES/gendis/find}
   resourcesAuthKeys: ${RESOURCES_AUTH_KEYS:{"1":"1"}}
+  vpIndexAuthKeys: ${VPINDEX_AUTH_KEYS:"xxx"}
 
 logging:
   level:
