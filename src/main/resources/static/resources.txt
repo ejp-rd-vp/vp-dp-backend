@@ -1,6 +1,6 @@
 [
   {
-    "resourceName": "RD-Connect-GPAP-gio",
+    "resourceName": "RD-Connect-GPAP",
     "resourceAddress": "https://platform.rd-connect.eu/beacon2/api/individuals",
     "resourceHomePage": "https://platform.rd-connect.eu",
     "email": "ammar.barakat@kgu.de",
