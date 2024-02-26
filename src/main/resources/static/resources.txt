@@ -41,8 +41,8 @@
     "resourceName": "ERKReg",
     "resourceAddress": "https://www448.lamp.le.ac.uk/erknet/BeaconAPI/83/individuals",
     "resourceHomePage": "https://www.erknet.org/patients-registry/registry-mission",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "The European Rare Kidney Disease Registry.",
+    "email": "contact@erknet.org ",
+    "resourceDescription": "ERKReg, a Web-based registry for all patients with rare kidney diseases. The main objectives of this core registry are to generate epidemiological information, identify current patient cohort for clinical research, explore diagnostic and therapeutic management practices, and monitor treatment performance and patient’s outcomes.",
     "resourceType": [
       "PATIENT_REGISTRY"
     ],
@@ -50,7 +50,7 @@
     "created": "2021-10-13T06:25:33.898Z",
     "updated": "2021-10-13T06:25:33.898Z",
     "specsURL": "",
-    "logo": "https://endo-ern.eu/wp-content/uploads/2018/03/eurreca-logo-768x242.jpg",
+    "logo": "https://www.erknet.org/typo3conf/ext/sitepackage/Resources/Public/Images/Logos/Logo_ERKNet.png",
     "resourceContentType": "",
     "queryable": true,
     "queryType": ["BEACON_INDIVIDUALS"],
