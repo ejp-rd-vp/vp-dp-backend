@@ -3,7 +3,7 @@
     "resourceName": "RD-Connect-GPAP",
     "resourceAddress": "https://platform.rd-connect.eu/beacon2/api/individuals",
     "resourceHomePage": "https://platform.rd-connect.eu",
-    "email": "ammar.barakat@kgu.de",
+    "email": "help@rd-connect.eu ",
     "resourceDescription": "The RD‐Connect Genome‐Phenome Analysis Platform (GPAP) is a collaborative platform to accelerate rare disease diagnosis and gene discovery, that enables authorised users to submit, share, analyse and interpret integrated genome-phenome data from Rare Disease patients and relatives.",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -59,7 +59,7 @@
   {
     "resourceName": "BBMRI-Eric",
     "resourceAddress": "http://ejp-rd-prod1.vm.cesnet.cz:5050/api/catalogs",
-    "resourceHomePage": "https://directory.bbmri-eric.eu/",
+    "resourceHomePage": "https://www.bbmri-eric.eu/",
     "email": "ammar.barakat@kgu.de",
     "resourceDescription": "The BBMRI-Eric catalogue of rare disease registries and biobanks.",
     "resourceType": [
@@ -70,7 +70,7 @@
     "created": "2020-12-02T10:42:09.170Z",
     "updated": "2020-12-02T10:42:09.170Z",
     "specsURL": "",
-    "logo": "",
+    "logo": "https://www.bbmri-eric.eu/wp-content/themes/bbmri-eric/img/BBMRI-ERIC-gateway-for-health.svg",
     "resourceContentType": "",
     "queryable": true,
     "queryType": ["BEACON_CATALOG"],
@@ -97,11 +97,11 @@
     "theme": []
   },
   {
-    "resourceName": "DDP",
+    "resourceName": "Duchenne Data Platform",
     "resourceAddress": "",
     "resourceHomePage": "https://duchenne.nl/duchenne-data-platform-english/",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "The Duchenne Data Platform is a patient-led registry. Health information collected is stored in 'personal datalockers' for easy access at all times by patients through wearables or online.",
+    "email": "info@duchenne.nl",
+    "resourceDescription": "The Duchenne Data Platform (DDP) is a patient-led registry. Patients are the owners of their data and have their own data lockers where they can not only collect their Patient Reported Outcomes (PROs) but can also upload their data from other sources such as hospitals and wearables.",
     "resourceType": [
       "PATIENT_REGISTRY"
     ],
@@ -109,7 +109,7 @@
     "created": "2020-11-07T05:12:55.898Z",
     "updated": "2020-11-07T05:12:55.898Z",
     "specsURL": "",
-    "logo": "",
+    "logo": "https://duchenne.nl/wp-content/uploads/2016/06/duchenne-rond-logo300.jpg",
     "resourceContentType": "",
     "queryable": false,
     "queryType": ["BEACON_INDIVIDUALS"],
@@ -157,8 +157,8 @@
     "resourceName": "hPSCreg",
     "resourceAddress": "https://ejp-rd-dev1.vm.cesnet.cz/grlcs/hPSCreg",
     "resourceHomePage": "https://hpscreg.eu/about",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "hPSCreg is a global registry for human pluripotent stem cell lines (hPSC-lines). It aims to provide to the community\n\n1) a central and searchable hub for available hPSC-lines\n2) a central registry of clinical studies based on hPSC-lines\n3) a standardized identifier for hPSC-lines and register of these standard names\n4) a trustworthy data source for hPSC-lines by verifying the ethical and biological conformity of registered lines based on community standards\n5) comparability of quality standards in hPSC research\n6) certification of quality and ethical provenance of hPSC-lines\n7) a platform where any scientist or institution generating or working with PSC lines can register their cell lines, projects or clinical studies.",
+    "email": "https://hpscreg.eu/contact",
+    "resourceDescription": "The human pluripotent stem cell registry (hPSCreg), accessible at https://hpscreg.eu, is a public registry and data portal for human embryonic and induced pluripotent stem cell lines (hESC and hiPSC).",
     "resourceType": [
       "DATASET"
     ],
@@ -195,7 +195,7 @@
     "resourceName": "Metabolights",
     "resourceAddress": "",
     "resourceHomePage": "https://www.ebi.ac.uk/metabolights/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "https://www.ebi.ac.uk/about/contact",
     "resourceDescription": "A catalog to contain all metabolights study resources.",
     "resourceType": [
       "DATASET"
@@ -233,8 +233,8 @@
     "resourceName": "Registry VASCERN (VASCA)",
     "resourceAddress": "",
     "resourceHomePage": "https://vascern.eu/groupe/registry/",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "Databases of the ERN vascular anomalies",
+    "email": "vascern_registry@vascern.eu ",
+    "resourceDescription": "The VASCA registry collects data from patients with rare vascular diseases who are being treated at various expert centres across Europe. Its primary objective is to enhance our understanding of these rare diseases through various research endeavors, such as natural history studies, genotype-phenotype correlations, population comparisons, and cross-country care comparisons.",
     "resourceType":  [
       "PATIENT_REGISTRY"
     ],
@@ -290,8 +290,8 @@
   {
     "resourceName": "Registry ERN EURO-NMD (EURO-NMD Registry )",
     "resourceAddress": "",
-    "resourceHomePage": "",
-    "email": "ammar.barakat@kgu.de",
+    "resourceHomePage": "https://ern-euro-nmd.eu/",
+    "email": "info@ern-euro-nmd.eu",
     "resourceDescription": "EURO-NMD is a European reference network for the thematic grouping of rare neuromuscular diseases (NMDs), a broad group of related disorders that represent a major cause of mortality and lifelong disability in children and adults.",
     "resourceType":  [
       "PATIENT_REGISTRY"
@@ -328,9 +328,9 @@
   {
     "resourceName": "FAIRVasc",
     "resourceAddress": "",
-    "resourceHomePage": "",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "FAIRVASC is a research project of the European Vasculitis Society (EUVAS) and RITA European Reference Network, bringing together leading scientists, clinicians and patient organisations. The FAIRVASC consortium is made up of 10 partners who represent all of these areas of patient care, also substantial support from VIFOR PHARMA should be acknowledged. There are many important gaps in our knowledge about why and how vasculitis occurs, why some people seem to be more susceptible than others, how the disease process acts inside the body and whether different kinds of vasculitis should be treated in different ways.",
+    "resourceHomePage": "https://fairvasc.eu/ ",
+    "email": "fairvasc@cm-uj.krakow.pl",
+    "resourceDescription": "FAIRVASC is building registry interoperability to inform clinical care Vasculitis (an acquired, immune-mediated inflammatory disease involving blood vessels of many tissues and organs), needs sufficiently large quantities of data to enable well-informed conclusions about treatments and possible cures. It is thus essential to combine the databases of patient registries of several countries to build a dataset of sufficient size to enable meaningful research.",
     "resourceType":  [
       "PATIENT_REGISTRY"
     ],
@@ -367,7 +367,7 @@
     "resourceName": "Registry ERN eUROGEN",
     "resourceAddress": "",
     "resourceHomePage": "https://eurogen-ern.eu/what-we-do/registry-digital-activities/aim/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "eurogen@uroweb.org",
     "resourceDescription": "Registry from ERN eUROGEN on rare uro-recto-genital diseases and complex conditions.",
     "resourceType": [
       "PATIENT_REGISTRY"
