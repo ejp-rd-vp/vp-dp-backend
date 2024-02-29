@@ -77,14 +77,13 @@
     "theme": []
   },
   {
-    "resourceName": "Orphanet",
+    "resourceName": "Orphanet catalogue of rare disease registries and biobanks",
     "resourceAddress": "http://155.133.131.171:8080/OrphanetBeacon/catalogs",
-    "resourceHomePage": "https://www.orpha.net/consor/cgi-bin/Disease.php",
-    "email": "ammar.barakat@kgu.de",
+    "resourceHomePage": "https://www.orpha.net/",
+    "email": "contact.orphanet@inserm.fr",
     "resourceDescription": "The Orphanet catalogue of rare disease registries and biobanks.",
     "resourceType": [
-      "PATIENT_REGISTRY",
-      "BIO_BANK"
+      "CATALOG"
     ],
     "id": "4",
     "created": "2020-10-26T15:26:15.891Z",
