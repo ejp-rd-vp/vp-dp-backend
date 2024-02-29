@@ -22,7 +22,7 @@
     "resourceName": "Ithaca",
     "resourceAddress": "https://ithaca-emx2.molgeniscloud.org/api/beacon/individuals",
     "resourceHomePage": "https://ithaca.molgeniscloud.org/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "https://ern-ithaca.eu/contact/",
     "resourceDescription": "The main objective of this WP is to set up an interoperable registry dedicated to rare diseases within the scope of ITHACA called ILIAD Rare Diseases patient registry: an International Library of Intellectual disability and Anomalies of Development.",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -60,11 +60,10 @@
     "resourceName": "BBMRI-Eric",
     "resourceAddress": "http://ejp-rd-prod1.vm.cesnet.cz:5050/api/catalogs",
     "resourceHomePage": "https://www.bbmri-eric.eu/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "contact@bbmri-eric.eu",
     "resourceDescription": "The BBMRI-Eric catalogue of rare disease registries and biobanks.",
     "resourceType": [
-      "PATIENT_REGISTRY",
-      "BIO_BANK"
+       "CATALOG"
     ],
     "id": "3",
     "created": "2020-12-02T10:42:09.170Z",
@@ -80,11 +79,10 @@
     "resourceName": "Orphanet",
     "resourceAddress": "http://155.133.131.171:8080/OrphanetBeacon/catalogs",
     "resourceHomePage": "https://www.orpha.net/consor/cgi-bin/Disease.php",
-    "email": "ammar.barakat@kgu.de",
+    "email": "info@orphanet.org",
     "resourceDescription": "The Orphanet catalogue of rare disease registries and biobanks.",
     "resourceType": [
-      "PATIENT_REGISTRY",
-      "BIO_BANK"
+       "CATALOG"
     ],
     "id": "4",
     "created": "2020-10-26T15:26:15.891Z",
@@ -119,7 +117,7 @@
     "resourceName": "WikiPathways",
     "resourceAddress": "https://ejp-rd-dev1.vm.cesnet.cz/grlcs/wikipathway",
     "resourceHomePage": "https://www.wikipathways.org",
-    "email": "ammar.barakat@kgu.de",
+    "email": "https://www.wikipathways.org/team.html",
     "resourceDescription": "A collaborative platform for contributing and maintaining pathway information.",
     "resourceType": [
       "DATASET"
@@ -138,7 +136,7 @@
     "resourceName": "CTSR",
     "resourceAddress": "",
     "resourceHomePage": "https://ctsr.uniklinik-freiburg.de/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "ctsr-info@uniklinik-freiburg.de",
     "resourceDescription": ": The Care and Trial Site Registry (CTSR) is an online self-entry database of specialised sites seeing patients with neuromuscular and neurodegenerative diseases. It holds site-level information relevant to clinical studies and care provision, including facilities, equipment, personnel, and trial experience, as well aggregate data about their patient population. It does not hold patient-level data.",
     "resourceType": [
       "DATASET"
@@ -176,7 +174,7 @@
     "resourceName": "Infrafrontier",
     "resourceAddress": "",
     "resourceHomePage": "https://www.infrafrontier.eu/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "info@infrafrontier.eu",
     "resourceDescription": "INFRAFRONTIER, the European Research Infrastructure for modelling human diseases, provides the scientific community with access to valuable mouse and rat strains including resources and services for their generation, phenotyping, and application in specific research pipelines. INFRAFRONTIER archives and distributes transgenic lines via the European Mouse Mutant Archive (EMMA), which currently has more than 8700 strains available for distribution to researchers. EMMA is a core resource of INFRAFRONTIER and is part of its expanding resources and services portfolio.",
     "resourceType": [
       "BIO_BANK"
@@ -196,7 +194,7 @@
     "resourceAddress": "",
     "resourceHomePage": "https://www.ebi.ac.uk/metabolights/",
     "email": "https://www.ebi.ac.uk/about/contact",
-    "resourceDescription": "A catalog to contain all metabolights study resources.",
+    "resourceDescription": "A  to contain all metabolights study resources.",
     "resourceType": [
       "DATASET"
     ],
@@ -214,7 +212,7 @@
     "resourceName": "EGA",
     "resourceAddress": "",
     "resourceHomePage": "https://ega-archive.org/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "https://ega-archive.org/need-help/",
     "resourceDescription": "The EGA provides a service for the permanent archiving and distribution of personally identifiable genetic and phenotypic data resulting from biomedical research projects. Data at EGA was collected from individuals whose consent agreements authorise data release only for specific research use to bona fide researchers. Strict protocols govern how information is managed, stored and distributed by the EGA project.",
     "resourceType": [
       "CATALOG"
