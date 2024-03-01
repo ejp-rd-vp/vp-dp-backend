@@ -57,20 +57,19 @@
     "theme": []
   },
   {
-    "resourceName": "BBMRI-Eric",
-    "resourceAddress": "http://ejp-rd-prod1.vm.cesnet.cz:5050/api/catalogs",
+    "resourceName": "BBMRI-ERIC Directory",
+    "resourceAddress": "https://collection-discovery.bbmri-eric.eu:5050/api/catalogs",
     "resourceHomePage": "https://directory.bbmri-eric.eu/",
-    "email": "ammar.barakat@kgu.de",
-    "resourceDescription": "The BBMRI-Eric catalogue of rare disease registries and biobanks.",
+    "email": "contact@bbmri-eric.eu",
+    "resourceDescription": "The BBMRI-ERIC Directory is a tool that collects and makes available information about biobanks throughout Europe that are willing to share their data and/or samples, and to collaborate with other research groups.",
     "resourceType": [
-      "PATIENT_REGISTRY",
       "BIO_BANK"
     ],
     "id": "3",
     "created": "2020-12-02T10:42:09.170Z",
-    "updated": "2020-12-02T10:42:09.170Z",
+    "updated": "2024-03-01T11:23:00.000Z",
     "specsURL": "",
-    "logo": "",
+    "logo": "https://directory.bbmri-eric.eu/logo/bbmri-eric-logo-ohnezusatz.png",
     "resourceContentType": "",
     "queryable": true,
     "queryType": ["BEACON_CATALOG"],
