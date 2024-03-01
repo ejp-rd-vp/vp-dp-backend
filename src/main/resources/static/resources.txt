@@ -89,7 +89,7 @@
     "created": "2020-10-26T15:26:15.891Z",
     "updated": "2020-10-26T15:26:15.891Z",
     "specsURL": "",
-    "logo": "",
+    "logo": "https://www.orpha.net/build/images/logo-orphanet.png",
     "resourceContentType": "",
     "queryable": true,
     "queryType": ["BEACON_CATALOG"],
@@ -380,5 +380,24 @@
     "queryable": false,
     "queryType": [],
     "theme": []
+  },
+  {
+    "resourceName": "ORPHADATA",
+    "resourceAddress": "",
+    "resourceHomePage": "https://www.orphadata.com/",
+    "email": "data.orphanet@inserm.fr",
+    "resourceDescription": "Orphadata provides the scientific community with comprehensive, massive, re-usable and computable quality data sets related to rare diseases from the Orphanet knowledge base.",
+    "resourceType": [
+      "DATASET"
+    ],
+    "id": "20",
+    "created": "",
+    "updated": "",
+    "specsURL": "",
+    "logo": "https://eurogen-ern.eu/wp-content/uploads/2016/11/eUROGEN-Website-Logo.jpg",
+    "resourceContentType": "",
+    "queryable": false,
+    "queryType": [],
+    "theme": ["http://www.orpha.net/ORDO/Orphanet_C001","https://www.wikidata.org/wiki/Q929833"]
   }
 ]
