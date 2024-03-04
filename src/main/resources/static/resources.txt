@@ -20,7 +20,7 @@
   },
   {
     "resourceName": "Ithaca",
-    "resourceAddress": "https://ithaca-emx2.molgeniscloud.org/api/beacon/individuals",
+    "resourceAddress": "",
     "resourceHomePage": "https://ithaca.molgeniscloud.org/",
     "email": "https://ern-ithaca.eu/contact/",
     "resourceDescription": "The main objective of this WP is to set up an interoperable registry dedicated to rare diseases within the scope of ITHACA called ILIAD Rare Diseases patient registry: an International Library of Intellectual disability and Anomalies of Development.",
@@ -33,8 +33,8 @@
     "specsURL": "",
     "logo": "https://ern-ithaca.eu/wp-content/themes/ernithaca/dist/images/ern-ithaca.png",
     "resourceContentType": "",
-    "queryable": true,
-    "queryType": ["BEACON_INDIVIDUALS"],
+    "queryable": false,
+    "queryType": [],
     "theme": []
   },
   {
@@ -76,19 +76,19 @@
     "theme": []
   },
   {
-    "resourceName": "Orphanet",
+    "resourceName": "Orphanet catalogue of rare disease registries and biobanks",
     "resourceAddress": "http://155.133.131.171:8080/OrphanetBeacon/catalogs",
-    "resourceHomePage": "https://www.orpha.net/consor/cgi-bin/Disease.php",
-    "email": "info@orphanet.org",
+    "resourceHomePage": "https://www.orpha.net/",
+    "email": "contact.orphanet@inserm.fr",
     "resourceDescription": "The Orphanet catalogue of rare disease registries and biobanks.",
     "resourceType": [
-       "CATALOG"
+      "CATALOG"
     ],
     "id": "4",
     "created": "2020-10-26T15:26:15.891Z",
     "updated": "2020-10-26T15:26:15.891Z",
     "specsURL": "",
-    "logo": "",
+    "logo": "https://www.orpha.net/build/images/logo-orphanet.png",
     "resourceContentType": "",
     "queryable": true,
     "queryType": ["BEACON_CATALOG"],
@@ -306,7 +306,7 @@
   },
   {
     "resourceName": "Genturis",
-    "resourceAddress": "https://genturis-emx2.molgeniscloud.org/api/beacon/individuals",
+    "resourceAddress": "",
     "resourceHomePage": "https://genturis.molgeniscloud.org/",
     "email": "ammar.barakat@kgu.de",
     "resourceDescription": "The GENTURIS registry is the European registry for patients with one of the genetic tumour risk syndromes (genturis). The registry is affiliated to the European Reference Network for all patients with one of the genetic tumour risk syndromes (ERN GENTURIS).",
@@ -319,8 +319,8 @@
     "specsURL": "",
     "logo": "https://genturis.molgeniscloud.org/logo/genturis-registry-logo-bg-white.png",
     "resourceContentType": "",
-    "queryable": true,
-    "queryType": ["BEACON_INDIVIDUALS"],
+    "queryable": false,
+    "queryType": [],
     "theme": []
   },
   {
@@ -379,5 +379,24 @@
     "queryable": false,
     "queryType": [],
     "theme": []
+  },
+  {
+    "resourceName": "ORPHADATA",
+    "resourceAddress": "",
+    "resourceHomePage": "https://www.orphadata.com/",
+    "email": "data.orphanet@inserm.fr",
+    "resourceDescription": "Orphadata provides the scientific community with comprehensive, massive, re-usable and computable quality data sets related to rare diseases from the Orphanet knowledge base.",
+    "resourceType": [
+      "DATASET"
+    ],
+    "id": "20",
+    "created": "",
+    "updated": "",
+    "specsURL": "",
+    "logo": "https://eurogen-ern.eu/wp-content/uploads/2016/11/eUROGEN-Website-Logo.jpg",
+    "resourceContentType": "",
+    "queryable": false,
+    "queryType": [],
+    "theme": ["http://www.orpha.net/ORDO/Orphanet_C001","https://www.wikidata.org/wiki/Q929833"]
   }
 ]
