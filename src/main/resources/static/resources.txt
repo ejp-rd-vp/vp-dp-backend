@@ -3,7 +3,7 @@
     "resourceName": "RD-Connect-GPAP",
     "resourceAddress": "https://platform.rd-connect.eu/beacon2/api/individuals",
     "resourceHomePage": "https://platform.rd-connect.eu",
-    "email": "help@rd-connect.eu ",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The RD‐Connect Genome‐Phenome Analysis Platform (GPAP) is a collaborative platform to accelerate rare disease diagnosis and gene discovery, that enables authorised users to submit, share, analyse and interpret integrated genome-phenome data from Rare Disease patients and relatives.",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -22,7 +22,7 @@
     "resourceName": "Ithaca",
     "resourceAddress": "",
     "resourceHomePage": "https://ithaca.molgeniscloud.org/",
-    "email": "https://ern-ithaca.eu/contact/",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The main objective of this WP is to set up an interoperable registry dedicated to rare diseases within the scope of ITHACA called ILIAD Rare Diseases patient registry: an International Library of Intellectual disability and Anomalies of Development.",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -41,7 +41,7 @@
     "resourceName": "ERKReg",
     "resourceAddress": "https://www448.lamp.le.ac.uk/erknet/BeaconAPI/83/individuals",
     "resourceHomePage": "https://www.erknet.org/patients-registry/registry-mission",
-    "email": "contact@erknet.org ",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "ERKReg, a Web-based registry for all patients with rare kidney diseases. The main objectives of this core registry are to generate epidemiological information, identify current patient cohort for clinical research, explore diagnostic and therapeutic management practices, and monitor treatment performance and patient’s outcomes.",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -60,7 +60,7 @@
     "resourceName": "BBMRI-ERIC Directory",
     "resourceAddress": "https://collection-discovery.bbmri-eric.eu:5050/api/catalogs",
     "resourceHomePage": "https://directory.bbmri-eric.eu/",
-    "email": "contact@bbmri-eric.eu",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The BBMRI-ERIC Directory is a tool that collects and makes available information about biobanks throughout Europe that are willing to share their data and/or samples, and to collaborate with other research groups.",
     "resourceType": [
       "BIO_BANK"
@@ -79,7 +79,7 @@
     "resourceName": "Orphanet catalogue of rare disease registries and biobanks",
     "resourceAddress": "http://155.133.131.171:8080/OrphanetBeacon/catalogs",
     "resourceHomePage": "https://www.orpha.net/",
-    "email": "contact.orphanet@inserm.fr",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The Orphanet catalogue of rare disease registries and biobanks.",
     "resourceType": [
       "CATALOG"
@@ -98,7 +98,7 @@
     "resourceName": "Duchenne Data Platform",
     "resourceAddress": "",
     "resourceHomePage": "https://duchenne.nl/duchenne-data-platform-english/",
-    "email": "info@duchenne.nl",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The Duchenne Data Platform (DDP) is a patient-led registry. Patients are the owners of their data and have their own data lockers where they can not only collect their Patient Reported Outcomes (PROs) but can also upload their data from other sources such as hospitals and wearables.",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -117,7 +117,7 @@
     "resourceName": "WikiPathways",
     "resourceAddress": "https://ejp-rd-dev1.vm.cesnet.cz/grlcs/wikipathway",
     "resourceHomePage": "https://www.wikipathways.org",
-    "email": "https://www.wikipathways.org/team.html",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "A collaborative platform for contributing and maintaining pathway information.",
     "resourceType": [
       "DATASET"
@@ -136,7 +136,7 @@
     "resourceName": "CTSR",
     "resourceAddress": "",
     "resourceHomePage": "https://ctsr.uniklinik-freiburg.de/",
-    "email": "ctsr-info@uniklinik-freiburg.de",
+    "email": "abishaa.vengadeswaran@ejprd-project.eue",
     "resourceDescription": ": The Care and Trial Site Registry (CTSR) is an online self-entry database of specialised sites seeing patients with neuromuscular and neurodegenerative diseases. It holds site-level information relevant to clinical studies and care provision, including facilities, equipment, personnel, and trial experience, as well aggregate data about their patient population. It does not hold patient-level data.",
     "resourceType": [
       "DATASET"
@@ -155,7 +155,7 @@
     "resourceName": "hPSCreg",
     "resourceAddress": "https://ejp-rd-dev1.vm.cesnet.cz/grlcs/hPSCreg",
     "resourceHomePage": "https://hpscreg.eu/about",
-    "email": "https://hpscreg.eu/contact",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The human pluripotent stem cell registry (hPSCreg), accessible at https://hpscreg.eu, is a public registry and data portal for human embryonic and induced pluripotent stem cell lines (hESC and hiPSC).",
     "resourceType": [
       "DATASET"
@@ -174,7 +174,7 @@
     "resourceName": "Infrafrontier",
     "resourceAddress": "",
     "resourceHomePage": "https://www.infrafrontier.eu/",
-    "email": "info@infrafrontier.eu",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "INFRAFRONTIER, the European Research Infrastructure for modelling human diseases, provides the scientific community with access to valuable mouse and rat strains including resources and services for their generation, phenotyping, and application in specific research pipelines. INFRAFRONTIER archives and distributes transgenic lines via the European Mouse Mutant Archive (EMMA), which currently has more than 8700 strains available for distribution to researchers. EMMA is a core resource of INFRAFRONTIER and is part of its expanding resources and services portfolio.",
     "resourceType": [
       "BIO_BANK"
@@ -193,7 +193,7 @@
     "resourceName": "Metabolights",
     "resourceAddress": "",
     "resourceHomePage": "https://www.ebi.ac.uk/metabolights/",
-    "email": "https://www.ebi.ac.uk/about/contact",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "A  to contain all metabolights study resources.",
     "resourceType": [
       "DATASET"
@@ -212,7 +212,7 @@
     "resourceName": "EGA",
     "resourceAddress": "",
     "resourceHomePage": "https://ega-archive.org/",
-    "email": "https://ega-archive.org/need-help/",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The EGA provides a service for the permanent archiving and distribution of personally identifiable genetic and phenotypic data resulting from biomedical research projects. Data at EGA was collected from individuals whose consent agreements authorise data release only for specific research use to bona fide researchers. Strict protocols govern how information is managed, stored and distributed by the EGA project.",
     "resourceType": [
       "CATALOG"
@@ -231,7 +231,7 @@
     "resourceName": "Registry VASCERN (VASCA)",
     "resourceAddress": "",
     "resourceHomePage": "https://vascern.eu/groupe/registry/",
-    "email": "vascern_registry@vascern.eu ",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The VASCA registry collects data from patients with rare vascular diseases who are being treated at various expert centres across Europe. Its primary objective is to enhance our understanding of these rare diseases through various research endeavors, such as natural history studies, genotype-phenotype correlations, population comparisons, and cross-country care comparisons.",
     "resourceType":  [
       "PATIENT_REGISTRY"
@@ -251,7 +251,7 @@
     "resourceName": "Registry ERN CRANIO (ERN CRANIO registry )",
     "resourceAddress": "",
     "resourceHomePage": "https://cranio.molgeniscloud.org/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "ERN CRANIO is the European Reference Network for rare and/or complex craniofacial anomalies and ear, nose and throat (ENT) disorders. The network was officially launched in March 2017. There are 29 European hospitals involved in ERN CRANIO, from 11 EU member states. It is a multi-disciplinary network of highly specialised healthcare professionals. Patient representatives also play an active role in the network and its activities.",
     "resourceType":  [
       "PATIENT_REGISTRY"
@@ -270,7 +270,7 @@
     "resourceName": "Registry ERN-Skin (ERN-Skin REGISTRY)",
     "resourceAddress": "",
     "resourceHomePage": "https://solve-rd.eu/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The aim of ERN-Skin is to have a central European registry for all cases of rare dermatological diseases, which will be a useful tool for clinical research, simplify the development of cohorts and answer the specific questions of each Disease Group.",
     "resourceType":  [
       "PATIENT_REGISTRY"
@@ -289,7 +289,7 @@
     "resourceName": "Registry ERN EURO-NMD (EURO-NMD Registry )",
     "resourceAddress": "",
     "resourceHomePage": "https://ern-euro-nmd.eu/",
-    "email": "info@ern-euro-nmd.eu",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "EURO-NMD is a European reference network for the thematic grouping of rare neuromuscular diseases (NMDs), a broad group of related disorders that represent a major cause of mortality and lifelong disability in children and adults.",
     "resourceType":  [
       "PATIENT_REGISTRY"
@@ -308,7 +308,7 @@
     "resourceName": "Genturis",
     "resourceAddress": "",
     "resourceHomePage": "https://genturis.molgeniscloud.org/",
-    "email": "ammar.barakat@kgu.de",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The GENTURIS registry is the European registry for patients with one of the genetic tumour risk syndromes (genturis). The registry is affiliated to the European Reference Network for all patients with one of the genetic tumour risk syndromes (ERN GENTURIS).",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -327,7 +327,7 @@
     "resourceName": "FAIRVasc",
     "resourceAddress": "",
     "resourceHomePage": "https://fairvasc.eu/ ",
-    "email": "fairvasc@cm-uj.krakow.pl",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "FAIRVASC is building registry interoperability to inform clinical care Vasculitis (an acquired, immune-mediated inflammatory disease involving blood vessels of many tissues and organs), needs sufficiently large quantities of data to enable well-informed conclusions about treatments and possible cures. It is thus essential to combine the databases of patient registries of several countries to build a dataset of sufficient size to enable meaningful research.",
     "resourceType":  [
       "PATIENT_REGISTRY"
@@ -346,7 +346,7 @@
     "resourceName": "CHD7",
     "resourceAddress": "https://mutatiedatabases.molgeniscloud.org/api/beacon/individuals",
     "resourceHomePage": "",
-    "email": "ammar.barakat@kgu.de",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -365,7 +365,7 @@
     "resourceName": "Registry ERN eUROGEN",
     "resourceAddress": "",
     "resourceHomePage": "https://eurogen-ern.eu/what-we-do/registry-digital-activities/aim/",
-    "email": "eurogen@uroweb.org",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "Registry from ERN eUROGEN on rare uro-recto-genital diseases and complex conditions.",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -384,7 +384,7 @@
     "resourceName": "ORPHADATA",
     "resourceAddress": "",
     "resourceHomePage": "https://www.orphadata.com/",
-    "email": "data.orphanet@inserm.fr",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "Orphadata provides the scientific community with comprehensive, massive, re-usable and computable quality data sets related to rare diseases from the Orphanet knowledge base.",
     "resourceType": [
       "DATASET"
