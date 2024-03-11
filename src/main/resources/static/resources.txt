@@ -58,7 +58,7 @@
   },
   {
     "resourceName": "BBMRI-ERIC Directory",
-    "resourceAddress": "",
+    "resourceAddress": "https://collection-discovery.bbmri-eric.eu:5050/api/catalogs",
     "resourceHomePage": "https://directory.bbmri-eric.eu/",
     "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The BBMRI-ERIC Directory is a tool that collects and makes available information about biobanks throughout Europe that are willing to share their data and/or samples, and to collaborate with other research groups.",
@@ -71,8 +71,8 @@
     "specsURL": "",
     "logo": "https://www.bbmri-eric.eu/wp-content/themes/bbmri-eric/img/BBMRI-ERIC-gateway-for-health.svg",
     "resourceContentType": "",
-    "queryable": false,
-    "queryType": [],
+    "queryable": true,
+    "queryType": ["BEACON_CATALOG"],
     "theme": []
   },
   {
