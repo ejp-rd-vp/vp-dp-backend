@@ -384,7 +384,7 @@
     "resourceName": "Duchenne Parent Project",
     "resourceAddress": "",
     "resourceHomePage": "https://dpp.worldduchenne.org/",
-    "email": "info@fairdata.systems",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "https://dpp.worldduchenne.org/",
     "resourceType": [
       "PATIENT_REGISTRY"
@@ -403,7 +403,7 @@
     "resourceName": "Duchenne Parent Project Beacon",
     "resourceAddress": "http://fairdata.services:10002/individuals",
     "resourceHomePage": "https://dpp.worldduchenne.org/",
-    "email": "info@fairdata.systems",
+    "email": "abishaa.vengadeswaran@ejprd-project.eu",
     "resourceDescription": "The Beacon2 Individuals endpoint for Duchenne Parent Project data and the EJP Virtual Platform",
     "resourceType": [
       "PATIENT_REGISTRY"
