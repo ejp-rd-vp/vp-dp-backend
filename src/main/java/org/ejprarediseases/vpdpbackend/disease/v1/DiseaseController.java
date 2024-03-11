@@ -1,5 +1,12 @@
 package org.ejprarediseases.vpdpbackend.disease.v1;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.ejprarediseases.vpdpbackend.disease.v1.model.Disease;
 import org.ejprarediseases.vpdpbackend.disease.v1.model.DiseaseDto;
@@ -15,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("v1/disease")
 @RequiredArgsConstructor
 @Validated
+@Tag(name = "Disease", description = "Endpoints for retrieving disease information")
 public class DiseaseController {
 
     private final DiseaseService service;
@@ -32,8 +40,25 @@ public class DiseaseController {
      * @return A ResponseEntity containing the DiseaseDto if found,
      * or an empty response with HTTP status 404 if not found.
      */
+    @Operation(
+            summary = "Get Disease by OrphaCode",
+            description = "Retrieves disease information based on the provided OrphaCode."
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Disease information retrieved successfully",
+                    content = @Content(schema = @Schema(implementation = DiseaseDto.class))
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Disease not found"
+            )
+    })
     @GetMapping()
-    public ResponseEntity getDiseaseByOrphaCode(@RequestParam  String orphaCode) {
+    public ResponseEntity getDiseaseByOrphaCode(
+            @Parameter(description = "OrphaCode representing the disease to be retrieved")
+            @RequestParam  String orphaCode) {
         try {
             Disease disease = service.getDiseaseByOrphaCode(orphaCode);
             DiseaseDto diseaseDto = service.diseaseToDto(disease);

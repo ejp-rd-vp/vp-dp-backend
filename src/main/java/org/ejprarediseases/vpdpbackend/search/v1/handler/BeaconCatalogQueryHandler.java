@@ -9,6 +9,7 @@ import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filte
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filters.ontology_filter.BeaconRequestBodyOntologyFilter;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.sections.BeaconRequestBodyMetaSection;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.sections.BeaconRequestBodyQuerySection;
+import org.ejprarediseases.vpdpbackend.utils.UserHandler;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -34,6 +35,7 @@ public class BeaconCatalogQueryHandler {
                 .uri( resource.getResourceAddress())
                 .bodyValue(requestBody)
                 .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", UserHandler.getBearerToken())
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
@@ -61,8 +63,12 @@ public class BeaconCatalogQueryHandler {
         BeaconRequestBodyQuerySection querySection = new BeaconRequestBodyQuerySection();
         List<BeaconRequestBodyFilter> filters = new ArrayList<>();
         filters.add(buildDiseaseFilter(searchRequest.getDiseases()));
-        filters.add(buildResourceTypesFilter(searchRequest.getResourceTypes()));
-        filters.add(buildCountryFilter(searchRequest.getCountries()));
+        if(searchRequest.getResourceTypes() != null && !searchRequest.getResourceTypes().isEmpty()) {
+            filters.add(buildResourceTypesFilter(searchRequest.getResourceTypes()));
+        }
+        if(searchRequest.getCountries() != null && !searchRequest.getCountries().isEmpty()) {
+            filters.add(buildCountryFilter(searchRequest.getCountries()));
+        }
         querySection.setFilters(filters);
         return querySection;
     }

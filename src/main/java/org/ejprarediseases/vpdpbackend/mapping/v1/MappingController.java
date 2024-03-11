@@ -1,5 +1,12 @@
 package org.ejprarediseases.vpdpbackend.mapping.v1;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
@@ -13,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Validated
 @RequestMapping("v1/mapping")
+@Tag(name = "Mapping", description = "Endpoints for gene mapping")
 public class MappingController {
 
   MappingService mappingService;
@@ -51,8 +59,25 @@ public class MappingController {
    * @param hgncId The HGNC (HUGO Gene Nomenclature Committee) ID of the gene to fetch mapping for.
    * @return A ResponseEntity containing the GeneMapping object as the response body with HTTP status OK (200)
    */
+  @Operation(
+          summary = "Get Gene Mapping",
+          description = "Retrieves gene mapping information for the specified HGNC ID."
+  )
+  @ApiResponses({
+          @ApiResponse(
+                  responseCode = "200",
+                  description = "Gene mapping retrieved successfully",
+                  content = @Content(schema = @Schema(implementation = GeneMapping.class))
+          ),
+          @ApiResponse(
+                  responseCode = "400",
+                  description = "Bad request"
+          )
+  })
   @GetMapping("/gene/{hgncId}")
-  public ResponseEntity getGeneMapping(@PathVariable @Valid @Size(min = 1) String hgncId) {
+  public ResponseEntity getGeneMapping(
+          @Parameter(description = "HGNC ID of the gene to fetch mapping for")
+          @PathVariable @Valid @Size(min = 1) String hgncId) {
     return new ResponseEntity<>(mappingService.getGeneMapping(hgncId), HttpStatus.OK);
     }
 }

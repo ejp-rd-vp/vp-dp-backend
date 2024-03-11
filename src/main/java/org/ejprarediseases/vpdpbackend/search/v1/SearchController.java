@@ -1,5 +1,12 @@
 package org.ejprarediseases.vpdpbackend.search.v1;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.ResourceType;
@@ -7,6 +14,7 @@ import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Country;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Sex;
 import org.ejprarediseases.vpdpbackend.search.v1.model.SearchRequest;
 import org.ejprarediseases.vpdpbackend.search.v1.model.SearchResponse;
+import org.ejprarediseases.vpdpbackend.utils.UserHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,11 +24,14 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("v1/search")
 @RequiredArgsConstructor
 @Validated
+@Tag(name = "Search", description = "Endpoints for searching diseases")
 public class SearchController {
 
     private final SearchService searchService;
@@ -77,27 +88,62 @@ public class SearchController {
      * @param resourceId The resource ID.
      * @return A ResponseEntity containing the search response and OK status.
      */
+    @Operation(
+            summary = "Search Diseases",
+            description = "Searches for diseases based on various criteria."
+    )
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Search successful",
+                    content = @Content(schema = @Schema(implementation = SearchResponse.class))
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad request"
+            ),
+            @ApiResponse(
+                    responseCode = "406",
+                    description = "Not Acceptable"
+            )
+    })
     @GetMapping
     public ResponseEntity searchForDiseasesByOrphaCode(
+            @Parameter(description = "List of resource types")
             @RequestParam(required = false) List<ResourceType> resourceTypes,
+            @Parameter(description = "List of countries")
             @RequestParam(required = false) List<Country> countries,
+            @Parameter(description = "List of sexes")
             @RequestParam(required = false) List<Sex> sexes,
+            @Parameter(description = "Age criteria for the current year [min, max]")
             @RequestParam(required = false) List<Integer> ageThisYear,
+            @Parameter(description = "Symptom onset ages [min, max]")
             @RequestParam(required = false) List<Integer> symptomOnset,
+            @Parameter(description = "Age at diagnosis criteria [min, max]")
             @RequestParam(required = false) List<Integer> ageAtDiagnoses,
+            @Parameter(description = "List of disease codes")
             @RequestParam List<String> diseases,
+            @Parameter(description = "Resource ID")
             @RequestParam String resourceId
     ) {
         SearchRequest searchRequest = new SearchRequest();
         searchRequest.setResourceTypes(resourceTypes);
         searchRequest.setCountries(countries);
-        searchRequest.setSexes(sexes);
-        searchRequest.setAgeThisYear(ageThisYear);
-        searchRequest.setSymptomOnset(symptomOnset);
-        searchRequest.setAgeAtDiagnosis(ageAtDiagnoses);
         searchRequest.setDiseases(diseases);
         searchRequest.setResourceId(resourceId);
         SearchResponse searchResponse;
+        if(UserHandler.isAuthenticated() && !UserHandler.isAnonymous()) {
+            searchRequest.setSexes(sexes);
+            searchRequest.setAgeThisYear(ageThisYear);
+            searchRequest.setSymptomOnset(symptomOnset);
+            searchRequest.setAgeAtDiagnosis(ageAtDiagnoses);
+        } else {
+            if (Stream.of(sexes, ageThisYear, symptomOnset, ageAtDiagnoses).noneMatch(Objects::isNull)) {
+                return new ResponseEntity<>(
+                        "Please log in to activate these filers: sexes, ageThisYear, symptomOnset, ageAtDiagnoses",
+                        HttpStatus.UNAUTHORIZED);
+            }
+        }
         try {
             searchResponse = searchService.searchForDiseasesByOrphaCode(searchRequest);
         } catch (IOException e) {
