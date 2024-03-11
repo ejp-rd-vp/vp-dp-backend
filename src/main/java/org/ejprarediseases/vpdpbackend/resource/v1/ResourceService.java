@@ -29,9 +29,7 @@ public class ResourceService {
      * @throws IOException if there's an error reading the resources file.
      */
     public List<Resource> getAllResources() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return objectMapper.readValue(readResourcesFileAsInputStream(), new TypeReference<List<Resource>>() {});
+        return new VpIndexService().getAllResourceByVpIndex();
     }
 
     public List<Resource> getAllQueryableResources() throws IOException {
