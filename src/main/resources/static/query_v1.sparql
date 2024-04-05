@@ -1,0 +1,62 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ejprd: <http://purl.org/ejp-rd/vocabulary/>
+PREFIX fdp-o: <https://w3id.org/fdp/fdp-o#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT * WHERE {
+    # resourceName
+    ?resource dcterms:title ?resourceName .
+
+    # vpConnectionType
+    ?resource ejprd:vpConnection ?vpConnectionType .
+
+    # dataServices
+    OPTIONAL {
+        ?resource dcat:endpointURL ?resourceAddress .
+    }
+    
+    OPTIONAL {
+        ?resource dcat:landingPage ?resourceHomePage .
+    }
+    
+    OPTIONAL {
+        ?resource dcterms:description ?resourceDescription .
+    }
+
+    # resource type?
+
+    # id?
+
+    # updated, created
+    ?resource fdp-o:metadataIssued ?created ;
+        fdp-o:metadataModified ?updated .
+
+    # logo
+    OPTIONAL {
+        ?resource dcterms:publisher [ foaf:logo ?logo ]
+    }
+}
+
+#
+#[
+#  {
+#    "resourceName": "RD-Connect-GPAP",
+#    "vpConnectionType": "VPDiscoverable, VPContentDiscovery",
+#    "dataServices": [
+#        {
+#            "resourceAddress": "https://platform.rd-connect.eu/beacon2/api/individuals",
+#            "queryType": "BEACON_INDIVIDUALS",
+#            "resourceContentType": ""
+#
+#        ]
+#    ]
+#    "resourceHomePage": "https://platform.rd-connect.eu",
+#    "resourceDescription": "The RD‐Connect Genome‐Phenome Analysis Platform (GPAP) is a collaborative platform to accelerate rare disease diagnosis and gene discovery, that enables authorised users to submit, share, analyse and interpret integrated genome-phenome data from Rare Disease patients and relatives.",
+#    "resourceType": "patientRegistry",
+#    "id": "0",
+#    "created": "2021-10-13T06:25:33.898Z",
+#    "updated": "2021-10-13T06:25:33.898Z",
+#    "logo": "https://statics.cnag.crg.eu/rdconnect/img/gpap_logo_new_text.svg"
+#  }
+#]

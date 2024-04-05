@@ -1,62 +1,40 @@
+PREFIX ejprd: <https://w3id.org/ejp-rd/vocabulary#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX ejprd: <http://purl.org/ejp-rd/vocabulary/>
 PREFIX fdp-o: <https://w3id.org/fdp/fdp-o#>
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
 
 SELECT * WHERE {
-    # resourceName
-    ?resource dcterms:title ?resourceName .
+    # select all resources (any resource, not limited to a specific type) that define a vpConnection property
+    ?resource ejprd:vpConnection ?connection ;
 
-    # vpConnectionType
-    ?resource ejprd:vpConnection ?vpConnectionType .
+            # get the resource title (always assumed to be there)
+            dcterms:title ?resourceName ;
 
-    # dataServices
-    OPTIONAL {
-        ?resource dcat:endpointURL ?resourceAddress .
-    }
+            # get the created timestamp (always assumed to be there)
+            fdp-o:metadataIssued ?created ;
+
+            # get the modification timestamp (always assumed to be there)
+            fdp-o:metadataModified ?updated .
+
+    # get the landing page, if any (not all resources seem to define this?)
+    OPTIONAL { ?resource dcat:landingPage ?resourceHomePage }
+
+    # get the description, if any (not all resources seem to define this?) 
+    OPTIONAL { ?resource dcterms:description ?resourceDescription }
+
+    # get the publisher's logo, if any
+    OPTIONAL { ?resource dcterms:publisher [ foaf:logo ?logo ] }
     
     OPTIONAL {
-        ?resource dcat:landingPage ?resourceHomePage .
-    }
-    
-    OPTIONAL {
-        ?resource dcterms:description ?resourceDescription .
-    }
+        # get the distribution of this resource (so this limits it to Catalogs, Datasets, PatientRegistries, and BioBanks)
+        ?resource dcat:distribution ?dist .
 
-    # resource type?
-
-    # id?
-
-    # updated, created
-    ?resource fdp-o:metadataIssued ?created ;
-        fdp-o:metadataModified ?updated .
-
-    # logo
-    OPTIONAL {
-        ?resource dcterms:publisher [ foaf:logo ?logo ]
+        # for the distribution, get the DataService
+        ?dist dcat:accessService ?service .
+        
+        # for the DataService, get the endpoint url and its type
+        ?service dcat:endpointURL ?endpointUrl ;
+                 dcterms:type ?type .
     }
 }
-
-#
-#[
-#  {
-#    "resourceName": "RD-Connect-GPAP",
-#    "vpConnectionType": "VPDiscoverable, VPContentDiscovery",
-#    "dataServices": [
-#        {
-#            "resourceAddress": "https://platform.rd-connect.eu/beacon2/api/individuals",
-#            "queryType": "BEACON_INDIVIDUALS",
-#            "resourceContentType": ""
-#
-#        ]
-#    ]
-#    "resourceHomePage": "https://platform.rd-connect.eu",
-#    "resourceDescription": "The RD‐Connect Genome‐Phenome Analysis Platform (GPAP) is a collaborative platform to accelerate rare disease diagnosis and gene discovery, that enables authorised users to submit, share, analyse and interpret integrated genome-phenome data from Rare Disease patients and relatives.",
-#    "resourceType": "patientRegistry",
-#    "id": "0",
-#    "created": "2021-10-13T06:25:33.898Z",
-#    "updated": "2021-10-13T06:25:33.898Z",
-#    "logo": "https://statics.cnag.crg.eu/rdconnect/img/gpap_logo_new_text.svg"
-#  }
-#]
