@@ -119,9 +119,12 @@ public class BeaconIndividualsQueryHandler {
         BeaconRequestBodyQuerySection querySection = new BeaconRequestBodyQuerySection();
         List<BeaconRequestBodyFilter> filters = new ArrayList<>();
         BeaconRequestBodyOntologyFilter filter = new BeaconRequestBodyOntologyFilter();
-        filter.setId(Collections.singletonList("Orphanet_730"));
+        List<String> ids = new ArrayList<>();
+        ids.add("Orphanet_730");
+        ids.add("Orphanet_635");
+        filter.setId(ids);
         filters.add(filter);
-        filters.add(buildSexFilter(Arrays.asList(Sex.values())));
+        //filters.add(buildSexFilter(Arrays.asList(Sex.values())));
         filters.add(buildMinAgeFilter(0));
         filters.add(buildMaxAgeFilter(100));
         filters.add(buildMinSymptomOnsetFilter(0));
