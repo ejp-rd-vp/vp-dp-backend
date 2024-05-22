@@ -1,11 +1,9 @@
 package org.ejprarediseases.vpdpbackend.resource.v1.model;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.URL;
-import org.springframework.validation.annotation.Validated;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -20,12 +18,12 @@ public class Resource {
     @NotNull
     private String email;
     private String resourceDescription;
-    private List<ResourceType> resourceType;
+    private List<ResourceType> resourceType; //TODO: change t datatype from List<ResourceType> to ResourceType
     private String id;
     private Timestamp created;
     private Timestamp updated;
     @URL
-    private String specsURL;
+    private String resourceUri;
     @URL
     private String logo;
     private String resourceContentType;
