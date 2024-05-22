@@ -1,5 +1,4 @@
 PREFIX ejprd: <https://w3id.org/ejp-rd/vocabulary#>
-PREFIX ejpold: <http://purl.org/ejp-rd/vocabulary/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -7,14 +6,14 @@ PREFIX fdp-o: <https://w3id.org/fdp/fdp-o#>
 PREFIX ldp: <http://www.w3.org/ns/ldp#>
 
 
-SELECT DISTINCT ?resourceName ?resource ?resourceTypeURI ?resourceCreated ?resourceUpdated ?resourceHomepage ?resourceDescription ?resourceLogo
-WHERE { VALUES ?connection { ejpold:vpConnection ejprd:vpConnection dcat:theme dcat:themeTaxonomy }
-        VALUES ?discoverable { ejpold:VPDiscoverable ejprd:VPDiscoverable }
+SELECT DISTINCT ?fdp ?resourceName ?resource (strafter(str(?resourceTypeURI), "#") AS ?ResourceType) ?resourceCreated ?resourceUpdated ?resourceHomepage ?resourceDescription ?resourceLogo
+
+WHERE {
         ?container ldp:membershipResource ?parent_container ;
                    ldp:contains ?resource .
         ?parent_container a ?parentType .
         ?resource a ?resourceTypeURI ;
-        		  ?connection ?discoverable ;
+        		  ejprd:vpConnection <https://w3id.org/ejp-rd/vocabulary#VPDiscoverable> ;
                   dcterms:title ?resourceName ;
                   fdp-o:metadataIssued ?resourceCreated ;
                   fdp-o:metadataModified ?resourceUpdated .
@@ -25,8 +24,10 @@ WHERE { VALUES ?connection { ejpold:vpConnection ejprd:vpConnection dcat:theme d
         # The other is the logo of the host organization (e.g. World Duchenne Organization)
         # This query captures the latter, not the former...
         OPTIONAL { ?resource dcterms:publisher [ foaf:logo ?resourceLogo ] }
+        # This is awful!  But it will work most of the time...
+    	BIND(strbefore(strafter(str(?resource),"//"),"/") as ?fdp)
         # everthing is a resource
-        FILTER(?resourceTypeURI != dcat:Resource)
+        FILTER(strafter(str(?resourceTypeURI), "#") != "Resource")
 	    # FDPs are metadata services and resources
-        FILTER(?resourceTypeURI != fdp-o:MetadataService)
-}  ORDER BY ?resourceLogo
+        FILTER(strafter(str(?resourceTypeURI), "#") != "MetadataService")
+}  ORDER BY ?fdp
