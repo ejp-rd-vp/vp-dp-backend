@@ -19,7 +19,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Timestamp;
@@ -91,9 +90,9 @@ public class VpIndexService {
             JsonElement element = resources.get(i);
             Resource resource = new Resource();
 
-            if (element.getAsJsonObject().getAsJsonObject("resourceTypeURI")!=null) {
+            if (element.getAsJsonObject().getAsJsonObject("ResourceType")!=null) {
                 List<ResourceType> resourceTypes = new ArrayList<>();
-                switch(element.getAsJsonObject().getAsJsonObject("resourceTypeURI").
+                switch(element.getAsJsonObject().getAsJsonObject("ResourceType").
                         get("value").getAsString()){
                     case "http://purl.org/ejp-rd/vocabulary/PatientRegistry":
                         resourceTypes.add(ResourceType.PATIENT_REGISTRY);
@@ -111,6 +110,25 @@ public class VpIndexService {
                     case "http://www.w3.org/ns/dcat#Catalog":
                         resourceTypes.add(ResourceType.CATALOG);
                         break;
+
+
+                    case "PatientRegistry":
+                        resourceTypes.add(ResourceType.PATIENT_REGISTRY);
+                        break;
+                    case "Biobank":
+                        resourceTypes.add(ResourceType.BIO_BANK);
+                        break;
+                    case "Dataset":
+                        resourceTypes.add(ResourceType.DATASET);
+                        break;
+                    case "Guideline":
+                        resourceTypes.add(ResourceType.GUIDELINE);
+                        break;
+                    case "Catalog":
+                        resourceTypes.add(ResourceType.CATALOG);
+                        break;
+
+
                     default:
                         continue;
                 }
