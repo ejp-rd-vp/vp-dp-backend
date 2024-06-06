@@ -120,8 +120,8 @@ public class BeaconIndividualsQueryHandler {
         List<BeaconRequestBodyFilter> filters = new ArrayList<>();
         BeaconRequestBodyOntologyFilter filter = new BeaconRequestBodyOntologyFilter();
         List<String> ids = new ArrayList<>();
-        ids.add("Orphanet_730");
-        ids.add("Orphanet_635");
+        ids.add("ordo:Orphanet_730");
+        ids.add("ordo:Orphanet_635");
         filter.setId(ids);
         filters.add(filter);
         //filters.add(buildSexFilter(Arrays.asList(Sex.values())));
