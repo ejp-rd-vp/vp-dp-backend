@@ -1,5 +1,8 @@
 package org.ejprarediseases.vpdpbackend.config;
 
+import com.nimbusds.jose.JOSEObjectType;
+import com.nimbusds.jose.proc.DefaultJOSEObjectTypeVerifier;
+import io.micrometer.common.lang.NonNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +12,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -24,9 +26,15 @@ public class SecurityConfig {
     private String jwtSetUri;
 
     @Bean
+    @NonNull
     public JwtDecoder jwtDecoder() {
         return NimbusJwtDecoder.withJwkSetUri(jwtSetUri)
-                .jwsAlgorithm(SignatureAlgorithm.ES256).build();
+                .jwtProcessorCustomizer(
+                        customizer -> {
+                            customizer.setJWSTypeVerifier(
+                                    new DefaultJOSEObjectTypeVerifier<>(new JOSEObjectType("at+jwt")));
+                        })
+                .build();
     }
 
     @Bean
