@@ -1,12 +1,9 @@
 package org.ejprarediseases.vpdpbackend.resource.v1;
 
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.nimbusds.jose.shaded.gson.Gson;
-import com.nimbusds.jose.shaded.gson.JsonArray;
-import com.nimbusds.jose.shaded.gson.JsonElement;
-import com.nimbusds.jose.shaded.gson.JsonObject;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.QueryType;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.Resource;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.ResourceType;
@@ -41,7 +38,6 @@ public class VpIndexService {
     private String vpIndexUmid = "D100CB7A-040D-A506-A705-44EEA1D0E378";
 
 
-
     /**
      * Retrieves a list of all resource from the VP Index via sparql queries.
      *
@@ -51,7 +47,6 @@ public class VpIndexService {
     public List<Resource> getAllResourceByVpIndex() throws IOException {
          return transformToResourceListLevelTwo(
                  transformToResourceListLevelOne(fetchVpIndex(1)),fetchVpIndex(2));
-
     }
 
 
@@ -198,18 +193,6 @@ public class VpIndexService {
 
         }
 
-        //filter resourceList by unique resourceName entries
-        /*resourceList = resourceList
-                .stream()
-                .collect(Collectors.groupingBy(
-                        Resource::getResourceUri,
-                        Collectors.maxBy(Comparator.comparing(Resource::getId))
-                ))
-                .values()
-                .stream()
-                .map(opt -> opt.orElse(null))
-                .collect(Collectors.toList());*/
-
         resourceList = resourceList.stream().filter(distinctByKey(Resource::getResourceUri)).toList();
 
         return resourceList;
@@ -221,42 +204,44 @@ public class VpIndexService {
             JsonElement element = resources.get(i);
 
             for (Resource resource : resourceList) {
-                if (resource.getResourceUri().equals(
-                        element.getAsJsonObject().getAsJsonObject("dataset").
-                                get("value").getAsString())) {
+                if (element.getAsJsonObject().getAsJsonObject("dataset") != null) {
+                    if (resource.getResourceUri().equals(
+                            element.getAsJsonObject().getAsJsonObject("dataset").
+                                    get("value").getAsString())) {
 
-                    if (element.getAsJsonObject().getAsJsonObject("operationType") != null) {
-                        List<QueryType> queryTypeList = new ArrayList<>();
-                        switch (element.getAsJsonObject().getAsJsonObject("operationType").
-                                get("value").getAsString()) {
-                            case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_individuals":
-                                queryTypeList.add(QueryType.BEACON_INDIVIDUALS);
-                                break;
-                            case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_catalog":
-                                queryTypeList.add(QueryType.BEACON_CATALOG);
-                                break;
-                            /*case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_biosamples":
-                                queryTypeList.add(QueryType.BEACON_CATALOG)
-                                break;*/
-                            default:
-                                continue;
-                        }
-                        resource.setQueryType(queryTypeList);
+                        if (element.getAsJsonObject().getAsJsonObject("operationType") != null) {
+                            List<QueryType> queryTypeList = new ArrayList<>();
+                            switch (element.getAsJsonObject().getAsJsonObject("operationType").
+                                    get("value").getAsString()) {
+                                case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_individuals":
+                                    queryTypeList.add(QueryType.BEACON_INDIVIDUALS);
+                                    break;
+                                case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_catalog":
+                                    queryTypeList.add(QueryType.BEACON_CATALOG);
+                                    break;
+                                /*case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_biosamples":
+                                    queryTypeList.add(QueryType.BEACON_CATALOG)
+                                    break;*/
+                                default:
+                                    continue;
+                            }
+                            resource.setQueryType(queryTypeList);
 
-                        resource.setQueryable(true);
+                            resource.setQueryable(true);
 
-                        if (element.getAsJsonObject().getAsJsonObject("serviceURL")!=null) {
-                            resource.setResourceAddress(element.getAsJsonObject().
-                                    getAsJsonObject("serviceURL").get("value").getAsString());
-                        }else{
+                            if (element.getAsJsonObject().getAsJsonObject("serviceURL")!=null) {
+                                resource.setResourceAddress(element.getAsJsonObject().
+                                        getAsJsonObject("serviceURL").get("value").getAsString());
+                            }else{
+                                resource.setQueryable(false);
+                            }
+
+                            //set default
+                            resource.setEmail("abishaa.vengadeswaran@ejprd-project.eu");
+
+                        } else {
                             resource.setQueryable(false);
                         }
-
-                        //set default
-                        resource.setEmail("abishaa.vengadeswaran@ejprd-project.eu");
-
-                    } else {
-                        resource.setQueryable(false);
                     }
                 }
             }
