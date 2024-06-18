@@ -81,7 +81,7 @@ public class BeaconFilterHandler {
      * @return The constructed BeaconRequestBodyOntologyFilter.
      */
     public static BeaconRequestBodyOntologyFilter buildDiseaseFilter(List<String> diseases) {
-        List<String> modifiedDiseases = diseases.stream().map(disease -> "Orphanet_" + disease).toList();
+        List<String> modifiedDiseases = diseases.stream().map(disease -> "ordo:Orphanet_" + disease).toList();
         return createOntologyFilter(modifiedDiseases);
     }
 

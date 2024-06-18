@@ -15,6 +15,7 @@ application:
   hierarchyUrl: ${HIERARCHY_URL}
   geneMappingUrl: ${GENE_MAPPING_URL}
   resourcesAuthKeys: ${RESOURCES_AUTH_KEYS}
+  vpIndexAuthKeys: ${VPINDEX_AUTH_KEYS}
 
 logging:
   level:

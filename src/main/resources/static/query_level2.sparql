@@ -1,0 +1,36 @@
+PREFIX ejprd: <https://w3id.org/ejp-rd/vocabulary#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX fdp-o: <https://w3id.org/fdp/fdp-o#>
+PREFIX ldp: <http://www.w3.org/ns/ldp#>
+
+
+SELECT DISTINCT ?fdp ?resourceName ?resource (strafter(str(?parentTypeURI), "#") AS ?parentType) ?parent_container ?dataset ?serviceHomePage ?serviceURL ?openAPI ?operationType ?resourceDescription ?resourceLogo
+
+WHERE {
+        ?container ldp:membershipResource ?parent_container ;
+                   ldp:contains ?resource .
+        ?parent_container a ?parentTypeURI .
+        ?resource a dcat:DataService ;
+        		  ejprd:vpConnection <https://w3id.org/ejp-rd/vocabulary#VPDiscoverable> ;
+                  dcterms:title ?resourceName ;
+        OPTIONAL { ?resource dcat:landingPage ?serviceHomePage }
+        OPTIONAL { ?resource dcat:endpointURL ?serviceURL }
+        OPTIONAL { ?resource dcat:endpointDescription ?openAPI }
+        OPTIONAL { ?resource dcat:servesDataset ?dataset }
+    	# This is the only way to filter-out the FDP itself
+        # Unfortunately, in the FDP ReferenceImplementation, the
+	    # FDP is a DataService :-P  Yuck!
+        # So we need to filter on an EJP required metadata element
+    	?resource dcterms:type ?operationType .
+
+	    OPTIONAL { ?resource dcterms:description ?resourceDescription }
+        OPTIONAL { ?resource dcterms:publisher [ foaf:logo ?resourceLogo ] }
+            # everthing is a resource
+        FILTER(strafter(str(?parentTypeURI), "#") != "Resource")
+
+
+        # This is awful!  But it will work most of the time...
+    	BIND(strbefore(strafter(str(?resource),"//"),"/") as ?fdp)
+}  ORDER BY ?fdp

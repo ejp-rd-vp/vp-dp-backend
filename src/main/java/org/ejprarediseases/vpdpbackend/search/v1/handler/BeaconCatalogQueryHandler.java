@@ -95,7 +95,7 @@ public class BeaconCatalogQueryHandler {
         BeaconRequestBodyQuerySection querySection = new BeaconRequestBodyQuerySection();
         List<BeaconRequestBodyFilter> filters = new ArrayList<>();
         BeaconRequestBodyOntologyFilter filter = new BeaconRequestBodyOntologyFilter();
-        filter.setId(Collections.singletonList("Orphanet_730"));
+        filter.setId(Collections.singletonList("ordo:Orphanet_730"));
         filters.add(filter);
         filters.add(buildResourceTypesFilter(Arrays.asList(ResourceType.values())));
         filters.add(buildCountryFilter(Arrays.asList(Country.values())));

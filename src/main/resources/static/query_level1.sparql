@@ -1,0 +1,33 @@
+PREFIX ejprd: <https://w3id.org/ejp-rd/vocabulary#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX fdp-o: <https://w3id.org/fdp/fdp-o#>
+PREFIX ldp: <http://www.w3.org/ns/ldp#>
+
+
+SELECT DISTINCT ?fdp ?resourceName ?resource (strafter(str(?resourceTypeURI), "#") AS ?ResourceType) ?resourceCreated ?resourceUpdated ?resourceHomepage ?resourceDescription ?resourceLogo
+
+WHERE {
+        ?container ldp:membershipResource ?parent_container ;
+                   ldp:contains ?resource .
+        ?parent_container a ?parentType .
+        ?resource a ?resourceTypeURI ;
+        		  ejprd:vpConnection <https://w3id.org/ejp-rd/vocabulary#VPDiscoverable> ;
+                  dcterms:title ?resourceName ;
+                  fdp-o:metadataIssued ?resourceCreated ;
+                  fdp-o:metadataModified ?resourceUpdated .
+        OPTIONAL { ?resource dcat:landingPage ?resourceHomePage }
+        OPTIONAL { ?resource dcterms:description ?resourceDescription }
+        # note that the EJP Schema has logos in two places!!
+        # one is the logo of the resource (e.g. Duchenne Parent Project Registry)
+        # The other is the logo of the host organization (e.g. World Duchenne Organization)
+        # This query captures the latter, not the former...
+        OPTIONAL { ?resource dcterms:publisher [ foaf:logo ?resourceLogo ] }
+        # This is awful!  But it will work most of the time...
+    	BIND(strbefore(strafter(str(?resource),"//"),"/") as ?fdp)
+        # everthing is a resource
+        FILTER(strafter(str(?resourceTypeURI), "#") != "Resource")
+	    # FDPs are metadata services and resources
+        FILTER(strafter(str(?resourceTypeURI), "#") != "MetadataService")
+}  ORDER BY ?fdp
