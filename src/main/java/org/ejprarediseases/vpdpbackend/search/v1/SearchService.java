@@ -5,12 +5,14 @@ import lombok.RequiredArgsConstructor;
 import org.ejprarediseases.vpdpbackend.resource.v1.ResourceService;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.Resource;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.ResourceType;
+import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconBiosampleQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconCatalogQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconIndividualsQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.model.SearchRequest;
 import org.ejprarediseases.vpdpbackend.search.v1.model.SearchResponse;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.BeaconRequestBody;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.response_body.BeaconResponseBody;
+import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.response_body.BiosampleResponseBody;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.response_body.CatalogResponseBody;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.response_body.IndividualsResponseBody;
 import org.ejprarediseases.vpdpbackend.utils.ObjectIOHandler;
@@ -19,8 +21,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
-import static org.ejprarediseases.vpdpbackend.resource.v1.model.QueryType.BEACON_CATALOG;
-import static org.ejprarediseases.vpdpbackend.resource.v1.model.QueryType.BEACON_INDIVIDUALS;
+import static org.ejprarediseases.vpdpbackend.resource.v1.model.QueryType.*;
 
 @Service
 @RequiredArgsConstructor
@@ -48,6 +49,8 @@ public class SearchService {
             }
         } else if (resource.getQueryType().contains(BEACON_CATALOG)) {
             return handleBeaconCatalogQuery(searchRequest, resource);
+        } else if (resource.getQueryType().contains(BEACON_BIOSAMPLE)) {
+            return handleBeaconBiosampleQuery(searchRequest, resource);
         }
         return new SearchResponse();
     }
@@ -92,6 +95,27 @@ public class SearchService {
             return beaconToSearchResponse(resource, response);
         }
         return new SearchResponse();
+    }
+
+    /**
+     * Handles the search request for Beacon Individuals query and returns the corresponding search response.
+     *
+     * @param searchRequest The search request containing filter criteria.
+     * @param resource The Beacon resource to query.
+     * @return The search response containing the retrieved information.
+     * @throws JsonProcessingException If there is an error during JSON processing.
+     */
+    private SearchResponse handleBeaconBiosampleQuery(
+            SearchRequest searchRequest, Resource resource) throws JsonProcessingException {
+        BeaconRequestBody requestBody =
+                BeaconBiosampleQueryHandler.convertToBeaconRequestBody(searchRequest);
+        String beaconResponseAsString = BeaconBiosampleQueryHandler.getResponse(resource, requestBody);
+        if (beaconResponseAsString != null) {
+            BeaconResponseBody response =
+                    ObjectIOHandler.deserialize(beaconResponseAsString, BiosampleResponseBody.class);
+            return beaconToSearchResponse(resource, response);
+        }
+        return null;
     }
 
     /**

@@ -19,7 +19,8 @@ public enum BeaconFilterType {
     ORGANISATION("organisation"),
     RESOURCE_TYPES("resourceTypes"),
     COUNTRY("country"),
-    AGE_AT_DIAGNOSIS("obo:NCIT_C156420");
+    AGE_AT_DIAGNOSIS("obo:NCIT_C156420"),
+    BIOSPECIMEN_TYPE("obo:NCIT_C70713");
 
     private final String value;
 

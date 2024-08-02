@@ -3,6 +3,7 @@ package org.ejprarediseases.vpdpbackend.search.v1.model;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.ejprarediseases.vpdpbackend.resource.v1.model.ResourceType;
+import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.BiospecimenType;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Country;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Sex;
 
@@ -22,4 +23,5 @@ public class SearchRequest {
     private List<Integer> symptomOnset;
     private List<Country> countries;
     private List<ResourceType> resourceTypes;
+    private List<BiospecimenType> biospecimenTypes;
 }

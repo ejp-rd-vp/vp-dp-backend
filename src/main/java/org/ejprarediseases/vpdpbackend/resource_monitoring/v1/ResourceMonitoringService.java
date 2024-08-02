@@ -8,6 +8,7 @@ import org.ejprarediseases.vpdpbackend.resource_monitoring.v1.model.Monitor;
 import org.ejprarediseases.vpdpbackend.resource_monitoring.v1.model.Period;
 import org.ejprarediseases.vpdpbackend.resource_monitoring.v1.model.ResourceMonitoringSummary;
 import org.ejprarediseases.vpdpbackend.resource_monitoring.v1.model.enums.HttpStatusCategory;
+import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconBiosampleQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconCatalogQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.handler.BeaconIndividualsQueryHandler;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.BeaconRequestBody;
@@ -30,8 +31,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.ejprarediseases.vpdpbackend.resource.v1.model.QueryType.BEACON_CATALOG;
-import static org.ejprarediseases.vpdpbackend.resource.v1.model.QueryType.BEACON_INDIVIDUALS;
+import static org.ejprarediseases.vpdpbackend.resource.v1.model.QueryType.*;
 import static org.ejprarediseases.vpdpbackend.resource_monitoring.v1.model.enums.HttpStatusCategory.*;
 
 @Service
@@ -76,6 +76,8 @@ public class ResourceMonitoringService {
             defaultRequestBody = BeaconIndividualsQueryHandler.getDefaultRequestBody();
         } else if (resource.getQueryType().contains(BEACON_CATALOG)) {
             defaultRequestBody = BeaconCatalogQueryHandler.getDefaultRequestBody();
+        } else if (resource.getQueryType().contains(BEACON_BIOSAMPLE)) {
+            defaultRequestBody = BeaconBiosampleQueryHandler.getDefaultRequestBody();
         }
         long startTime = System.currentTimeMillis();
         Monitor monitor = new Monitor();
