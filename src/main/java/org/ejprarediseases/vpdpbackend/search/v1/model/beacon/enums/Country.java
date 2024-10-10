@@ -29,5 +29,6 @@ public enum Country {
     SK,
     SI,
     ES,
-    SE;
+    SE,
+    TR;
 }
