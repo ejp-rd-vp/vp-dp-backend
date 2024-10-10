@@ -82,17 +82,21 @@ public class ResourceMonitoringService {
         long startTime = System.currentTimeMillis();
         Monitor monitor = new Monitor();
         monitor.setResourceId(resource.getId());
-        WebClient client = WebClient.create();
-        Mono<String> response = client.post()
-                .uri( resource.getResourceAddress())
-                .bodyValue(defaultRequestBody)
-                .accept(MediaType.APPLICATION_JSON)
-                .header("auth-key", authKey)
-                .exchangeToMono(rs -> {
-                    monitor.setResponseStatusCode(rs.statusCode().value());
-                    return rs.bodyToMono(String.class);
-                });
-        monitor.setResponseBody(response.block());
+        try{
+            WebClient client = WebClient.create();
+            Mono<String> response = client.post()
+                    .uri( resource.getResourceAddress())
+                    .bodyValue(defaultRequestBody)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .header("auth-key", authKey)
+                    .exchangeToMono(rs -> {
+                        monitor.setResponseStatusCode(rs.statusCode().value());
+                        return rs.bodyToMono(String.class);
+                    });
+            monitor.setResponseBody(response.block());
+        }catch (Exception exception){
+            System.out.println("Error monitorBeaconResource " + resource.getResourceName());
+        }
         long endTime = System.currentTimeMillis();
         monitor.setResponseTime(endTime - startTime);
         repository.save(monitor);
@@ -220,6 +224,7 @@ public class ResourceMonitoringService {
         int statusCodeCategoryIndicator =
                 Integer.parseInt(String.valueOf(monitor.getResponseStatusCode()).substring(0, 1));
         return switch (statusCodeCategoryIndicator) {
+            case 0 -> ERROR;
             case 1 -> INFORMATIONAL_RESPONSE;
             case 2 -> SUCCESSFUL_RESPONSE;
             case 3 -> REDIRECTION_RESPONSE;
