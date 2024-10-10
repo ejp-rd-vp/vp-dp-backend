@@ -219,9 +219,9 @@ public class VpIndexService {
                                 case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_catalog":
                                     queryTypeList.add(QueryType.BEACON_CATALOG);
                                     break;
-                                /*case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_biosamples":
-                                    queryTypeList.add(QueryType.BEACON_CATALOG)
-                                    break;*/
+                                case "https://w3id.org/ejp-rd/vocabulary#VPBeacon2_biosamples":
+                                    queryTypeList.add(QueryType.BEACON_BIOSAMPLE);
+                                    break;
                                 default:
                                     continue;
                             }

@@ -1,10 +1,7 @@
 package org.ejprarediseases.vpdpbackend.search.v1.handler;
 
 import org.ejprarediseases.vpdpbackend.resource.v1.model.ResourceType;
-import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.BeaconFilterOperator;
-import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.BeaconFilterType;
-import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Country;
-import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.Sex;
+import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums.*;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filters.numerical_alphanumerical_filter.BeaconRequestBodyANDFilter;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filters.numerical_alphanumerical_filter.BeaconRequestBodyORFilter;
 import org.ejprarediseases.vpdpbackend.search.v1.model.beacon.request_body.filters.ontology_filter.BeaconRequestBodyOntologyFilter;
@@ -146,6 +143,18 @@ public class BeaconFilterHandler {
     }
 
     /**
+     * Builds an OR filter for the biospecimen type.
+     *
+     * @param biospecimenTypes The txpe of biospecimen.
+     * @return The constructed BeaconRequestBodyANDFilter.
+     */
+    public static BeaconRequestBodyORFilter buildBiospecimenTypeFilter(List<BiospecimenType> biospecimenTypes) {
+        List<String> biospecimenIds =
+                biospecimenTypes.stream().map(BeaconFilterHandler::getBiospecimenTypeIdBasedOnApiSpec).toList();
+        return createORFilter(BIOSPECIMEN_TYPE, EQUAL, biospecimenIds);
+    }
+
+    /**
      * Builds an OR filter for the specified list of resource types.
      *
      * @param types The list of resource types to filter.
@@ -195,6 +204,36 @@ public class BeaconFilterHandler {
             case DATASET -> "Dataset";
             case GUIDELINE -> "Guideline";
             case CATALOG -> "Catalog";
+        };
+    }
+
+    /**
+     * Maps a Biospecimen enumeration value to its corresponding API-specific ID.
+     *
+     * @param biospecimen The Biospecimen type enumeration value.
+     * @return The API-specific ID for the given sex.
+     */
+    private static String getBiospecimenTypeIdBasedOnApiSpec(BiospecimenType biospecimen) {
+        return switch (biospecimen) {
+            case BLOOD_SPECIMEN -> "OBI_0000655";
+            case BONE_MARROW -> "OBI_0002512";
+            case BUFFY_COAT -> "OBIB_0000036";
+            case PERIPHERAL_BLOOD_MONONUCLEAR_CELL -> "CL_2000001";
+            case BLOOD_PLASMA_SPECIMEN -> "OBI_0100016";
+            case BLOOD_SERUM -> "OBI_0100017";
+            case ASCITES_FLUID -> "UBERON_0007795";
+            case CEREBROSSPINAL_FLUID -> "OBI_0002502";
+            case SALVIA -> "OBI_0002507";
+            case FECES -> "OBI_0002503";
+            case URINE -> "OBI_0000651";
+            case SWAB -> "OBI_0002599";
+            case BODILY_FLUID_SPECIMEN -> "OBI_2000009";
+            case FFPE_SPECIMEN -> "OBI_1200000";
+            case FROZEN_SPECIMEN -> "OBI_0000922";
+            case SPECIMEN_WITH_KNOWN_STORAGE_STATE -> "OBI_0001472";
+            case DNA_EXTRACT -> "OBI_0001051";
+            case RNA_EXTRACT -> "OBI_0000880";
+            case SPECIMEN_FROM_ORGANISM -> "OBI_0001479";
         };
     }
 }

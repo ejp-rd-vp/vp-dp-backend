@@ -1,0 +1,23 @@
+package org.ejprarediseases.vpdpbackend.search.v1.model.beacon.enums;
+
+public enum BiospecimenType {
+    BLOOD_SPECIMEN,
+    BONE_MARROW,
+    BUFFY_COAT,
+    PERIPHERAL_BLOOD_MONONUCLEAR_CELL,
+    BLOOD_PLASMA_SPECIMEN,
+    BLOOD_SERUM,
+    ASCITES_FLUID,
+    CEREBROSSPINAL_FLUID,
+    SALVIA,
+    FECES,
+    URINE,
+    SWAB,
+    BODILY_FLUID_SPECIMEN,
+    FFPE_SPECIMEN,
+    FROZEN_SPECIMEN,
+    SPECIMEN_WITH_KNOWN_STORAGE_STATE,
+    DNA_EXTRACT,
+    RNA_EXTRACT,
+    SPECIMEN_FROM_ORGANISM
+}
